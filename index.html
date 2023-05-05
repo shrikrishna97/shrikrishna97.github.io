@@ -40,10 +40,50 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Contact</a>
       </li>
+      <li class="nav-item">
+        <button class="btn btn-sm btn-toggle" id="theme-toggle">Toggle Dark/Light</button>
+      </li>
     </ul>
   </div>
 </nav>
+<div class="container mt-5">
+  <h1>Welcome to My Website</h1>
+  <p>This is a sample paragraph on my website.</p>
+</div>
 
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kI8ZB" crossorigin="anonymous"></script>
+
+<script>const toggleSwitch = document.getElementById('theme-toggle');
+const toggleIcon = toggleSwitch.querySelector('.btn-toggle');
+
+function switchTheme(e) {
+  if (e.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    toggleIcon.setAttribute('data-bs-toggle-state', 'Dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    toggleIcon.setAttribute('data-bs-toggle-state', 'Light');
+  }    
+}
+
+toggleSwitch.addEventListener('click', switchTheme, false);
+
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+if (currentTheme) {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  if (currentTheme === 'dark') {
+    toggleSwitch.checked = true;
+    toggleIcon.setAttribute('data-bs-toggle-state', 'Dark');
+  }
+}
+</script>
 </body>
 </html>
 
