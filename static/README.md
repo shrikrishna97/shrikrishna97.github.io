@@ -7,7 +7,7 @@ The first version of my personal website (axoy.me), which serves as a short intr
 
 
 
-# 🔗 [Axoy.me](https://www.axoy.me)
+# 🔗 [shrikrishna97](https://shrikrishna97.github.io/)
 
 I wanted to create a minimal yet modern looking webpage that combines my interest for graphic design, computer science, and functional design all into one.
 
