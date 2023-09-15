@@ -33,8 +33,8 @@ Enjoy!
 
 <br>
 
-*MIT License*
 
-*Copyright (c) 2022 Axoy*
 
-*Designed and created by Cüneyt Aksoy*
+
+
+
