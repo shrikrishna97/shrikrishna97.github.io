@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (you can link to a CDN or use a local file) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>My Certificates and Degrees</title>
+    <style>
+        /* Previous CSS styles ... */
+
+        /* Keyframes for fading in the certificate/degree items */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply the animation to the certificate/degree items */
+        .card {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Style for the container */
+        .pdf-container {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for the embedded PDF */
+        .pdf-object {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="bg-dark text-white text-center py-5">
+        <h1>My Certificates and Degrees</h1>
+    </header>
+
+    <!-- Certificates and Degrees Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+
+                <!-- Certificate/Degree items will be added dynamically by JavaScript -->
+            </div>
+            <!-- Use an iframe to embed the PDF -->
+            <!-- <iframe src="data science diploma.pdf" width="100%" height="500px" frameborder="0"></iframe> -->
+            <!-- Using the <object> tag -->
+
+
+            <!-- Using the <embed> tag (alternative) -->
+            <!-- <embed src="data science diploma.pdf" type="application/pdf" width="100%" height="500px"> -->
+
+
+            <!-- <p>If you cannot view the PDF, you can <a href="data science diploma.pdf">download it here</a>.</p> -->
+
+        </div>
+    </section>
+    <section class="">
+        <div class="pdf-container">
+            <object data="data science diploma.pdf" type="application/pdf" width="100%" height="500px">
+                <p>Your browser does not support PDFs. <a href="data science diploma.pdf">Download the PDF</a> instead.
+                </p>
+            </object>
+        </div>
+    </section>
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Contact Information</h5>
+                    <p>Email: shrikrishnapandey72@gmail.com</p>
+                    <p>Phone: 9993688046</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Facebook</a></li>
+                        <li><a href="#" class="text-white">Twitter</a></li>
+                        <li><a href="#" class="text-white">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center">&copy; 2023 Shri Krishna🦚. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Include Bootstrap JavaScript (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- JavaScript Function -->
+    <script>
+        // Function to add a certificate/degree item dynamically
+        function addCertificate(imageURL, title, description) {
+            var container = document.querySelector('.container'); // Get the container element
+
+            // Create a new certificate/degree item
+            var certificateItem = document.createElement('div');
+            certificateItem.classList.add('col--6', 'mb-4');
+
+
+            var card = document.createElement('div');
+            card.classList.add('card');
+
+            var cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            var cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title');
+            cardTitle.textContent = title;
+
+            var cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            cardText.textContent = description;
+
+            var certificateImage = document.createElement('img');
+            certificateImage.setAttribute('src', imageURL);
+            certificateImage.setAttribute('alt', 'Certificate');
+
+            // Append elements to the certificate/degree item
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+            card.appendChild(certificateImage);
+            card.appendChild(cardBody);
+            certificateItem.appendChild(card);
+
+            // Add the certificate/degree item to the container
+            container.appendChild(certificateItem);
+        }
+
+        // Usage example:
+        // Replace 'your-image.jpg' with the actual image URL, and customize the title and description.
+        addCertificate('components/certificate photo.jpg', 'Certificate/Degree Title', 'Description of the certificate or degree.');
+        addCertificate('components/certificate photo.jpg', 'Certificate/Degree Title', 'Description of the certificate or degree.');
+        addCertificate('components/certificate photo.jpg', 'Certificate/Degree Title', 'Description of the certificate or degree.');
+
+    </script>
+</body>
+
+</html>

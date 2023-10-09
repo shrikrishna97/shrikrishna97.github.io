@@ -1,0 +1,137 @@
+/* Custom CSS for design enhancements */
+body {
+  background-color: rgb(
+    38,
+    63,
+    64
+  ); /* Light gray background color #233944 #1f364c */
+}
+.section {
+  background-color: #dacece; /* White background for sections */
+  padding: 40px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+/* .project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+} */
+.carousel-caption {
+  backdrop-filter: blur(10px); /* Adjust the blur intensity as needed */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity */
+  color: #fff; /* Set the caption text color */
+}
+.scrollable-container {
+  /* Set the desired height for your container */
+  overflow-y: clip; /* Add a vertical scrollbar when content exceeds the container height */
+  /* You can also add other styles like padding, borders, etc. */
+}
+.avatar {
+  vertical-align: middle;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+/* Style the editor container */
+.editor-container {
+  width: 10%;
+  height: 200px;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  position: relative;
+}
+
+.lifted-image {
+  width: 100%; /* Set the width to 100% to make it responsive */
+  max-width: 600px; /* Adjust the size of the image */
+  height: 250px; /* Adjust the size of the image */
+  background-image: url("static/Resume_photo.png"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: lift 2s ease-in-out forwards;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+  
+}
+.lifted-image:hover {
+  opacity: 0;
+  /* Reduced opacity on hover */
+}
+
+
+@keyframes lift {
+  0% {
+    bottom: -200px; /* Start position below the ground */
+    opacity: 0.5;
+  }
+  100% {
+    bottom: 0; /* Lifted to ground level */
+    opacity: 0.9;
+  }
+}
+
+/* Custom button class with the desired background color */
+.btn-custom {
+  background-color: #233944; /* Change to your preferred color */
+  color: #fff; /* Text color (white in this example) */
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+.btn-cust {
+  background-color: rgb(14, 23, 24); /* Change to your preferred color */
+  color: #fff; /* Text color (white in this example) */
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+.btn-cust:hover {
+  background-color: #6c8dab; /* Change to a slightly different color on hover if needed */
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Hover effect to change button color on hover */
+.btn-custom:hover {
+  background-color: #3e4f5f; /* Change to a slightly different color on hover if needed */
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+  color: #dacece;
+}

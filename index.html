@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Include CodeMirror CSS and JavaScript (you can download it from https://codemirror.net) -->
+    <link rel="stylesheet" href="codemirror.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="codemirror.js"></script>
+    <!-- Include a CodeMirror mode (e.g., JavaScript) -->
+    <script src="mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Define a CSS class for your section with a background image */
+      .section-with-background {
+        /* Specify the background image URL */
+        background-image: url("static/pxfuel.com.jpg");
+
+        /* Set background image properties */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+        background-size: cover; /* Scale the image to cover the entire section */
+        background-position: center; /* Center the image horizontally and vertically */
+        /* You can also set other background properties like background-color, etc. */
+        /* Example: background-color: rgba(0, 0, 0, 0.5); for a semi-transparent overlay */
+        /* Example: background-blur: 10px; for a blurred background */
+        /* Example: background-attachment: fixed; for a fixed background */
+
+        /* Define section height to ensure the background image is visible */
+        height: 600px; /* Adjust the height as needed */
+      }
+
+      /* Light mode styles */
+      body.light-mode {
+        background-color: #f0f0f0;
+        color: #000;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #000;
+        color: #0a0909;
+      }
+
+      /* Style for the image container */
+      .image-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Style for the image */
+      .image-container img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s;
+        /* Add a smooth transition effect */
+      }
+
+      /* Style for the overlay */
+      .image-container .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent black background */
+        opacity: 0;
+        /* Initially hidden */
+        transition: opacity 0.3s;
+        /* Add a smooth transition effect */
+      }
+
+      /* Style for the overlay content (centered text) */
+      .image-container .overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-align: center;
+      }
+
+      /* Hover effect: Show the overlay and scale the image */
+      .image-container:hover img {
+        transform: scale(1.1);
+      }
+
+      .image-container:hover .overlay {
+        opacity: 1;
+        /* Show the overlay */
+      }
+      /* Define styles for the heading (h2) */
+      .professional-heading {
+        font-family: Arial, sans-serif; /* Use a professional sans-serif font */
+        font-size: 24px; /* Adjust the font size as needed */
+        font-weight: bold; /* Make it bold for emphasis */
+        color: #eeeaea; /* Set the text color (dark gray) */
+      }
+
+      /* Define styles for the paragraph (p) */
+      .professional-paragraph {
+        font-family: Helvetica, Arial, sans-serif; /* Choose a readable font stack */
+        font-size: 18px; /* Adjust the font size as needed */
+        line-height: 1.5; /* Set the line height for better readability */
+        color: #a67a7a; /* Set the text color (light gray) */
+      }
+
+      /* Custom keyframes animation
+         @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Apply the animation to the card component 
+        .card {
+            animation: slideInFromLeft 1s ease;
+        } */
+      /* Custom keyframes animation for hover effect */
+      @keyframes hoverEffect {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.03);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Apply the hover animation to the card when hovered */
+      .card:hover {
+        animation: hoverEffect 0.3s ease-in-out;
+      }
+      
+    </style>
+    <title>Shri Krishna🦚</title>
+  </head>
+
+  <body>
+    <div class="scrollable-container">
+      <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-dark">
+          <img src="static/sk.jpg" alt="Avatar" class="avatar" />
+          <a class="navbar-brand text-light" href="#">Shri Krishna🦚</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- bootstrap 5 has data-bs-traget for nav collapse otherwise it wont work -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#achievement">Achivevments</a>
+              </li>
+              <!-- <li class="nav-item">
+                        <a class="nav-link" href="#resume">Resume</a>
+                    </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="data science diploma.pdf"
+                  download
+                  class="btn btn-primary"
+                  >Download Resume</a
+                >
+              </li>
+            </ul>
+            <div id="mode-toggle" class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+              />
+              <!-- <label class="form-check-label" for="flexSwitchCheckDefault"></label> -->
+            </div>
+            <!-- <button id="mode-toggle" class="btn btn-cust">Toggle Mode</button> -->
+          </div>
+        </nav>
+      </header>
+      <div class="section-with-background" class="container-fluid text-light">
+        <section id="about" class="py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <h2 class="professional-heading">Namaste 🙏</h2>
+                <p class="professional-paragraph">
+                  I'm Shri Krishna
+                  <!-- Welcome to my portfolio! I'm a passionate web developer with a strong foundation in
+                                HTML, CSS, JavaScript, and more. I love building responsive and user-friendly websites
+                                that solve real-world problems. -->
+                </p>
+                <!-- Create a container for the code editor -->
+                <!-- <div class="editor-container">
+                        <textarea id="code">Hi There Welcome to my portfolio.</textarea>
+                        </div> -->
+                <a href="app/education/educ.html" class="btn btn-cust"
+                  >Wanna know more about my educational journey...</a
+                >
+              </div>
+              <div class="col-lg-6">
+                <div class="container mt-5">
+                  <div class="image-container">
+                    <img
+                      src="app/components/certificate photo.jpg"
+                      alt="Shri Krishna🦚"
+                      class="img-fluid rounded"
+                    />
+
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <!-- Overlay content (text or buttons) goes here -->
+                        <p>
+                          Getting My Diploma Certificate from IIT Madras,SAC
+                          auditorium
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section id="projects" class="py-5">
+        <div
+          id="projectCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="https://github.com/shrikrishna97/TracKKaroo_v1/blob/main/TracKKaroo/static/innerpage.jpg?raw=true"
+                class="d-block w-100"
+                alt="Project 1"
+              />
+              <div class="carousel-caption text-white">
+                <h3>Project 1 Title</h3>
+                <p>Description of Project 1 goes here.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://github.com/shrikrishna97/TracKKaroo_v1/blob/main/TracKKaroo/static/158867.jpg?raw=true"
+                class="d-block w-100"
+                alt="Project 2"
+              />
+              <div class="carousel-caption">
+                <h3>Project 2 Title</h3>
+                <p>Description of Project 2 goes here.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="static/bdm_project.png"
+                class="d-block w-100"
+                alt="Project 2"
+              />
+              <div class="carousel-caption">
+                <h3>Project 3 Title</h3>
+                <p>Description of Project 2 goes here.</p>
+              </div>
+            </div>
+            <!-- Add more slides with titles and captions -->
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#projectCarousel"
+            role="button"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#projectCarousel"
+            role="button"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+      </section>
+      <!-- Achievements and Certifications Section -->
+      <section id="achievement" class="py-5" style="background-color: gray">
+        <div class="container">
+          <h2 class="text-center text-light">
+            Achievements and Certifications
+          </h2>
+          <div class="row">
+            <!-- Achievement/Certification Item 1 -->
+
+            <div class="col-md-6" onclick="openNewPage('app/achieve.html')">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Achievement/Certification</h5>
+                  <p class="card-text">
+                    Description of the achievement or certification.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievement/Certification Item 2 -->
+
+            <div class="col-md-6" onclick="openNewPage('app/internship.html')">
+              <!-- <a href="internship.html"> -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Internship Work</h5>
+                  <p class="card-text">
+                    Description of the achievement or certification.
+                  </p>
+                </div>
+              </div>
+              <!-- </a> -->
+            </div>
+
+            <!-- Add more achievement/certification items as needed -->
+          </div>
+        </div>
+      </section>
+      <!-- Software and Tools Section -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <h2 class="fw-light text-white">Software/Tools</h2>
+            </div>
+          </div>
+          <div class="row my-5" id="software">
+            <div class="col">
+              <!-- HTML -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/color/30/000000/html-5--v1.png"
+                />
+                HTML
+              </div>
+              <!-- CSS -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img src="https://img.icons8.com/color/30/000000/css3.png" />
+                CSS
+              </div>
+              <!-- JavaScript -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/color/30/000000/javascript--v1.png"
+                />
+                JS
+              </div>
+              <!-- Python -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/color/30/000000/python--v1.png"
+                />
+                Python
+              </div>
+              <!-- Flask -->
+              <div class="btn btn-outline text-white" role="alert">Flask</div>
+              <!-- SKLearn -->
+              <div class="btn btn-outline text-white" role="alert">
+                <!-- <img src="sklearn.png" /> -->
+                SKLearn
+              </div>
+              <!-- Numpy -->
+              <div class="btn btn-outline text-white" role="alert">Numpy</div>
+              <!-- Pandas -->
+              <div class="btn btn-outline text-white" role="alert">Pandas</div>
+              <!-- Android (Java)
+                    <div class="btn btn-outline text-white" role="alert">
+                        <img src="https://img.icons8.com/color/30/000000/android-os.png" /> Android (Java)
+                    </div> -->
+              <!-- SQL -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/ios-filled/30/000000/sql.png"
+                  style="filter: contrast(0) brightness(5)"
+                />
+                SQL
+              </div>
+              <!-- Microsoft Excel -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/color/30/000000/microsoft-excel-2019--v1.png"
+                />
+                Microsoft Excel
+              </div>
+              <!-- Redis -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img src="https://img.icons8.com/color/30/000000/redis.png" />
+                Redis
+              </div>
+              <!-- Postgres -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/?size=1x&id=38561&format=png"
+                />
+                Postgres
+              </div>
+              <!-- Node.js -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img src="https://img.icons8.com/color/30/000000/nodejs.png" />
+                Node JS
+              </div>
+              <!-- Vue.js -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/30/000000/external-vuejs-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-logo-shadow-tal-revivo.png"
+                />
+                Vue JS
+              </div>
+              <!-- Express -->
+              <div class="btn btn-outline text-white" role="alert">Express</div>
+              <!-- Bootstrap -->
+              <div class="btn btn-outline text-white" role="alert">
+                <img
+                  src="https://img.icons8.com/color/30/000000/bootstrap.png"
+                />
+                Bootstrap
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume" class="py-5" style="background-color: gray">
+        <div class="container text-light">
+          <h2 class="text-center text-dark">Resume</h2>
+          <div class="row">
+            <!-- Left column for resume content -->
+            <!-- <div class="col-md-6 text-light"> -->
+            <!-- Resume content goes here -->
+            <p>
+              Explore my academic and career journey, highlighting my
+              qualifications, skills, and achievements.
+            </p>
+            <!-- Add more content as needed -->
+            <div class="container">
+              <div class="lifted-image"></div>
+            </div>
+            <!-- </div> -->
+            <!-- Right column for skills or additional information -->
+            <!-- <div class="col-md-6"> -->
+            <!-- Skills or additional information goes here -->
+            <!-- <ul>
+                                <li>Skill 1</li>
+                                <li>Skill 2</li>
+                                <li>Skill 3</li>
+                            </ul> -->
+            <!-- Add more content as needed -->
+            <div class="container mt-5">
+              <div class="text-center">
+                <!-- Button that redirects to the PDF file -->
+                <a
+                  href="data science diploma.pdf"
+                  class="btn btn-custom"
+                  target="_blank"
+                  >Open Resume</a
+                >
+                <a
+                  href="data science diploma.pdf"
+                  download
+                  class="btn btn-custom"
+                  >Download Resume</a
+                >
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section id="contact" class="py-5">
+        <div class="container text-light">
+          <h2 class="text-center">Contact Me</h2>
+          <div class="row">
+            <div class="col-lg-6">
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <!-- You can add your contact information or a map here -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-dark text-white py-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <h5>Contact Information</h5>
+              <a href="mailto:shrikrishnapandey72@gmail.com" class="text-blue" style="text-decoration: none;"><i class="far fa-envelope"></i> Email</a>
+
+              <!-- <p>Email: shrikrishnapandey72@gmail.com</p> -->
+              <!-- <p>Phone: +91 9993688046</p> -->
+            </div>
+            <div class="col-lg-6">
+              <h5>Let's Contect</h5>
+              <ul class="list-unstyled" >
+                <!-- <li><a href="#" class="text-white"><i class="fab fa-facebook"></i> Facebook</a></li> -->
+          <!-- <li><a href="#" class="text-white"><i class="fab fa-twitter"></i> Twitter</a></li> -->
+          <!-- <li><a href="#" class="text-white"><i class="fab fa-instagram"></i> Instagram</a></li> -->
+          <li><a href="https://www.linkedin.com/in/shri-krishna-pandey/" class="text-white" style="text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+          <li><a href="https://github.com/shrikrishna97" class="text-white" style="text-decoration: none;"><i class="fab fa-github"></i> GitHub</a></li>
+          <li><a href="#" class="text-white" style="text-decoration: none;"><i class="fab fa-youtube fa-spin fa-spin-reverse" style="color: #f7f7f8;"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <hr class="bg-light" />
+          <p class="text-center">
+            &copy; 2023 Shri Krishna🦚. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      checkRobot();
+    </script>
+    <script>
+      function openNewPage(newPageUrl) {
+        // Redirect the browser to the new page
+        window.location.href = newPageUrl;
+      }
+      // Function to toggle between light mode and dark mode
+      function toggleMode() {
+        const body = document.body;
+        body.classList.toggle("dark-mode");
+        body.classList.toggle("light-mode");
+      }
+
+      // Add click event listener to the mode toggle button
+      const modeToggleBtn = document.getElementById("mode-toggle");
+      modeToggleBtn.addEventListener("click", toggleMode);
+    </script>
+  </body>
+</html>
