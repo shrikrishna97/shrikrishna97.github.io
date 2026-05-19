@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ── Section scroll indicator ──────────────────────────────────
-    var sectionIds = ['about', 'experience', 'projects', 'achievement', 'skills-section', 'resume', 'youtube', 'blogs', 'contact'];
+    var sectionIds = ['about', 'experience', 'projects', 'achievement', 'skills-section', 'resume', 'youtube', 'blogs', 'activities', 'contact'];
     var dots = document.querySelectorAll('#section-indicator .sec-dot');
 
     function getActiveSection() {
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'resume':        'Resume | Shri Krishna🦚',
         'youtube':       'Teaching | Shri Krishna🦚',
         'blogs':         'Blogs | Shri Krishna🦚',
+        'activities':    'Podcasts | Shri Krishna🦚',
         'contact':       'Contact | Shri Krishna🦚'
     };
 
