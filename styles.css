@@ -27,6 +27,8 @@
   /* Misc */
   --border-color:   rgba(255, 255, 255, 0.1);
   --shadow:         0px 0px 14px rgba(0, 180, 216, 0.15);
+  /* Navbar links always stay light (navbar bg is always dark) */
+  --navbar-link-color: #e0e0e0;
 }
 
 /* Light-mode overrides */
@@ -136,7 +138,7 @@ body {
 }
 
 .nav-link {
-  color: var(--text-primary) !important;
+  color: var(--navbar-link-color) !important;
   transition: color 0.2s ease;
 }
 
@@ -153,7 +155,7 @@ body {
 
 /* Light mode: navbar stays dark, so keep nav text light */
 body.light-mode .navbar .nav-link {
-  color: #e0e0e0 !important;
+  color: var(--navbar-link-color) !important;
 }
 
 body.light-mode .navbar .nav-link:hover,
@@ -162,7 +164,7 @@ body.light-mode .navbar .nav-link.nav-active {
 }
 
 body.light-mode .navbar-brand {
-  color: #ffffff !important;
+  color: var(--navbar-link-color) !important;
 }
 
 /* ============================================================
