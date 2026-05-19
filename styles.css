@@ -62,7 +62,8 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -85,7 +86,7 @@ body {
 }
 
 /* Software/Tools section uses --bg-secondary */
-section.py-5:not([id]) {
+#skills-section {
   background-color: var(--bg-secondary);
 }
 
@@ -206,14 +207,14 @@ h2.text-center {
    ABOUT SECTION
    ============================================================ */
 .professional-heading {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: var(--text-heading);
 }
 
 .professional-paragraph {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5;
   color: var(--text-secondary);
@@ -321,6 +322,22 @@ h2.text-center {
 }
 
 /* ============================================================
+   SECTION HEADINGS — use CSS variables so both modes work
+   ============================================================ */
+.section-heading {
+  color: var(--text-heading) !important;
+}
+
+/* ============================================================
+   SKILLS / SOFTWARE BADGES
+   ============================================================ */
+#software .btn-outline {
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  background-color: transparent;
+}
+
+/* ============================================================
    REPO LINK BADGES in Experience cards
    ============================================================ */
 .repo-links {
@@ -346,4 +363,340 @@ h2.text-center {
   background-color: var(--accent-cyan);
   color: #0d1b2a;
   text-decoration: none;
+}
+
+/* ============================================================
+   SECTION SCROLL INDICATOR (left side)
+   ============================================================ */
+#section-indicator {
+  position: fixed;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sec-dot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sec-dot-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
+  border: 2px solid var(--text-secondary);
+  transition: background-color 0.25s, transform 0.25s;
+  flex-shrink: 0;
+}
+
+.sec-dot-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: var(--bg-navbar);
+  padding: 2px 7px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.sec-dot:hover .sec-dot-label,
+.sec-dot.active .sec-dot-label {
+  opacity: 1;
+}
+
+.sec-dot.active .sec-dot-circle {
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  transform: scale(1.35);
+}
+
+.sec-dot:hover .sec-dot-circle {
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+/* Hide indicator on very small screens */
+@media (max-width: 576px) {
+  #section-indicator {
+    display: none;
+  }
+}
+
+/* ============================================================
+   TEACHING CARDS — clickable
+   ============================================================ */
+.teaching-card {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teaching-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.22);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   FOOTER IMPROVEMENTS
+   ============================================================ */
+footer.site-footer {
+  background-color: var(--bg-navbar) !important;
+  color: var(--text-primary);
+  padding: 40px 0 20px;
+  border-top: 2px solid var(--accent-cyan);
+}
+
+footer.site-footer h5 {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+footer.site-footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer.site-footer a:hover {
+  color: var(--accent-cyan);
+}
+
+footer.site-footer .footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+footer.site-footer .footer-tagline {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+footer.site-footer .footer-divider {
+  border-color: var(--border-color);
+  margin: 20px 0 16px;
+}
+
+footer.site-footer .footer-copy {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ============================================================
+   GENERAL ALIGNMENT / OVERFLOW FIX
+   ============================================================ */
+section, .section-with-background {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+}
+
+/* ============================================================
+   TYPING TAGLINE (hero)
+   ============================================================ */
+.typing-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  min-height: 1.6em;
+  letter-spacing: 0.03em;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent-cyan);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================================
+   BACK-TO-TOP BUTTON
+   ============================================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--accent-cyan);
+  color: #0d1b2a;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.4);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top:hover {
+  background-color: var(--btn-hover);
+  color: #fff;
+}
+
+/* ============================================================
+   ACTIVE NAVBAR LINK
+   ============================================================ */
+.nav-link.nav-active {
+  color: var(--accent-cyan) !important;
+  border-bottom: 2px solid var(--accent-cyan);
+}
+
+/* ============================================================
+   PROJECTS GRID (below carousel)
+   ============================================================ */
+.projects-grid {
+  margin-top: 32px;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--text-primary);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.22);
+}
+
+.project-card h5 {
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.project-card .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 8px 0;
+}
+
+.project-card .tech-tag {
+  font-size: 0.72rem;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+.project-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.project-card .project-link {
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border: 1px solid var(--accent-cyan);
+  padding: 3px 11px;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+.project-card .project-link:hover {
+  background: var(--accent-cyan);
+  color: #0d1b2a;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+#contact {
+  background-color: var(--bg-secondary);
+}
+
+.contact-intro {
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.contact-value {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  word-break: break-all;
 }

@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO & social preview -->
+    <meta name="description" content="Portfolio of Shri Krishna Pandey — IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder." />
+    <meta property="og:title" content="Shri Krishna Pandey — IITM Alumnus &amp; Full-Stack Developer" />
+    <meta property="og:description" content="Portfolio of Shri Krishna Pandey — IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shrikrishna97.github.io/" />
+    <meta property="og:image" content="https://shrikrishna97.github.io/static/sk.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shri Krishna Pandey — IITM Alumnus &amp; Full-Stack Developer" />
+    <meta name="twitter:description" content="Portfolio of Shri Krishna Pandey — IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder." />
+    <meta name="twitter:image" content="https://shrikrishna97.github.io/static/sk.jpg" />
+
+    <!-- Favicon (emoji SVG — no file needed) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦚</text></svg>" />
+
+    <!-- Google Fonts — Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -32,7 +52,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        height: 600px;
+        min-height: 420px;
+        height: auto;
         position: relative;
       }
     </style>
@@ -78,16 +99,13 @@
                         <a class="nav-link" href="#resume">Resume</a>
                     </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="https://forms.gle/LWA1XRe2tU2jCft46"
-                  >Contact</a
-                >
+                <a class="nav-link" href="#contact">Contact</a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
+                  href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
                   download
-                  class="btn btn-primary"
                   >Download Resume</a
                 >
               </li>
@@ -105,12 +123,49 @@
           </div>
         </nav>
       </header>
-      <div class="section-with-background" class="container-fluid text-light">
+      <!-- Section scroll indicator -->
+      <nav id="section-indicator" aria-label="Page sections">
+        <a href="#about" class="sec-dot" data-section="about">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">About</span>
+        </a>
+        <a href="#experience" class="sec-dot" data-section="experience">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Experience</span>
+        </a>
+        <a href="#projects" class="sec-dot" data-section="projects">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Projects</span>
+        </a>
+        <a href="#achievement" class="sec-dot" data-section="achievement">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Achievements</span>
+        </a>
+        <a href="#skills-section" class="sec-dot" data-section="skills-section">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Skills</span>
+        </a>
+        <a href="#resume" class="sec-dot" data-section="resume">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Resume</span>
+        </a>
+        <a href="#youtube" class="sec-dot" data-section="youtube">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Teaching</span>
+        </a>
+        <a href="#contact" class="sec-dot" data-section="contact">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Contact</span>
+        </a>
+      </nav>
+
+      <div class="section-with-background container-fluid">
         <section id="about" class="py-5">
           <div class="container">
             <div class="row">
               <div class="col-lg-6">
                 <h2 class="professional-heading">Namaste 🙏</h2>
+                <p class="typing-tagline" id="typing-tagline"><span class="typing-cursor"></span></p>
                 <p class="professional-paragraph">
                   I'm <strong>Shri Krishna Pandey</strong> — an IITM Alumnus,
                   Course Instructor, Web Developer, and Python Programmer. I
@@ -155,7 +210,7 @@
 
       <section id="experience" class="py-5">
         <div class="container">
-          <h2 class="text-center text-light mb-4">Experience</h2>
+          <h2 class="text-center section-heading mb-4">Experience</h2>
           <div class="row">
             <div class="col-md-6 mb-4">
               <div class="card bg-dark text-light h-100">
@@ -209,7 +264,7 @@
 
       <section id="projects" class="py-5">
         <div class="container">
-          <h2 class="text-center text-light mb-4">Projects</h2>
+          <h2 class="text-center section-heading mb-4">Projects</h2>
         </div>
         <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -415,42 +470,8 @@
                 class="carousel-caption text-white"
                 style="background: rgba(0,0,0,0.6); border-radius: 8px; padding: 12px;"
               >
-                <h3>
-                  Quiz App
-                  <a href="https://github.com/shrikrishna97/Pro" target="_blank" class="text-warning">View on GitHub</a>
-                </h3>
+                <h3>Quiz App</h3>
                 <p>A quiz application built with <strong>Python Flask</strong>. Supports multiple quizzes, timed questions, and score tracking.</p>
-              </div>
-            </div>
-            <!-- New: Computational Thinking course repo -->
-            <div class="carousel-item">
-              <div
-                class="d-block w-100"
-                style="
-                  min-height: 400px;
-                  background: linear-gradient(135deg, #0f2237, #004d6e);
-                  display: flex !important;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                <div class="text-center text-light p-5">
-                  <h1>🧠</h1>
-                  <h3 class="text-warning">Computational Thinking</h3>
-                  <p class="lead">IITM Foundation Level — Live Session Content</p>
-                </div>
-              </div>
-              <div
-                class="carousel-caption text-white"
-                style="background: rgba(0,0,0,0.6); border-radius: 8px; padding: 12px;"
-              >
-                <h3>
-                  Computational Thinking Course
-                  <a href="https://github.com/shrikrishna97/Computational-Thinking" target="_blank" class="text-warning">View on GitHub</a>
-                </h3>
-                <p>
-                  Live session content for the <strong>Computational Thinking</strong> course of IITM Foundation level — English &amp; Hindi explanations, code demos, and student notes.
-                </p>
               </div>
             </div>
           </div>
@@ -474,10 +495,74 @@
           </a>
         </div>
       </section>
-      <!-- Achievements and Certifications Section -->
+      <!-- Projects Grid — all projects always visible -->
+      <section class="py-4" style="background-color:var(--bg-primary)">
+        <div class="container projects-grid">
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📊 TracKKaroo <span style="color:var(--accent-gold);font-size:0.78rem;">Vue.js + Flask</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Vue.js</span><span class="tech-tag">Flask</span><span class="tech-tag">Redis</span><span class="tech-tag">Celery</span>
+                </div>
+                <p>Quantified self-tracking web app with dynamic visualisations, Redis caching, async tasks and automated email reports.</p>
+                <a href="https://github.com/shrikrishna97/TracKKaroo" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>🧪 TracKKaroo v1 <span style="color:var(--accent-gold);font-size:0.78rem;">Flask + Jinja2</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Flask</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span>
+                </div>
+                <p>First version of TracKKaroo — track personal habits and goals with a clean server-rendered UI.</p>
+                <a href="https://github.com/shrikrishna97/TracKKaroo_v1" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📚 Resources-App-Dev <span style="color:var(--accent-gold);font-size:0.78rem;">⭐ 79 Stars</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Education</span><span class="tech-tag">IIT Madras</span>
+                </div>
+                <p>Comprehensive resource hub for IITM App Development students — 79+ stars, 30+ forks.</p>
+                <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>⚛️ React Todo App</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">React</span><span class="tech-tag">LocalStorage</span>
+                </div>
+                <p>Task management app with local storage, daily tracking, and clean add/complete/delete UI.</p>
+                <a href="https://github.com/shrikrishna97/React-Todo-App" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>❓ Quiz App (Pro)</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">SQLite</span>
+                </div>
+                <p>Quiz application with multiple quiz sets, timed questions, and score tracking.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📈 MKP Store Analysis</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Excel</span>
+                </div>
+                <p>BDM capstone — sales, inventory &amp; customer analysis for a kirana store with a Streamlit dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="achievement" class="py-5">
         <div class="container">
-          <h2 class="text-center text-light">
+          <h2 class="text-center section-heading">
             Achievements and Certifications
           </h2>
           <div class="row mt-4">
@@ -549,58 +634,58 @@
         </div>
       </section>
       <!-- Software and Tools Section -->
-      <section class="py-5">
+      <section id="skills-section" class="py-5">
         <div class="container">
           <div class="row">
             <div class="col text-center">
-              <h2 class="fw-light text-white">Software/Tools</h2>
+              <h2 class="fw-light section-heading">Software/Tools</h2>
             </div>
           </div>
           <div class="row my-5" id="software">
             <div class="col">
               <!-- HTML -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/html-5--v1.png"
                 />
                 HTML
               </div>
               <!-- CSS -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img src="https://img.icons8.com/color/30/000000/css3.png" />
                 CSS
               </div>
               <!-- JavaScript -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/javascript--v1.png"
                 />
                 JS
               </div>
               <!-- Python -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/python--v1.png"
                 />
                 Python
               </div>
               <!-- Flask -->
-              <div class="btn btn-outline text-white" role="alert">Flask</div>
+              <div class="btn btn-outline" role="alert">Flask</div>
               <!-- SKLearn -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <!-- <img src="sklearn.png" /> -->
                 SKLearn
               </div>
               <!-- Numpy -->
-              <div class="btn btn-outline text-white" role="alert">Numpy</div>
+              <div class="btn btn-outline" role="alert">Numpy</div>
               <!-- Pandas -->
-              <div class="btn btn-outline text-white" role="alert">Pandas</div>
+              <div class="btn btn-outline" role="alert">Pandas</div>
               <!-- Android (Java)
-                    <div class="btn btn-outline text-white" role="alert">
+                    <div class="btn btn-outline" role="alert">
                         <img src="https://img.icons8.com/color/30/000000/android-os.png" /> Android (Java)
                     </div> -->
               <!-- SQL -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/ios-filled/30/000000/sql.png"
                   style="filter: contrast(0) brightness(5)"
@@ -608,68 +693,68 @@
                 SQL
               </div>
               <!-- Microsoft Excel -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/microsoft-excel-2019--v1.png"
                 />
                 Microsoft Excel
               </div>
               <!-- Redis -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img src="https://img.icons8.com/color/30/000000/redis.png" />
                 Redis
               </div>
               <!-- Postgres -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/?size=1x&id=38561&format=png"
                 />
                 Postgres
               </div>
               <!-- Node.js -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img src="https://img.icons8.com/color/30/000000/nodejs.png" />
                 Node JS
               </div>
               <!-- Vue.js -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/30/000000/external-vuejs-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-logo-shadow-tal-revivo.png"
                 />
                 Vue JS
               </div>
               <!-- Express -->
-              <div class="btn btn-outline text-white" role="alert">Express</div>
+              <div class="btn btn-outline" role="alert">Express</div>
               <!-- Bootstrap -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/bootstrap.png"
                 />
                 Bootstrap
               </div>
               <!-- Django -->
-              <div class="btn btn-outline text-white" role="alert">Django</div>
+              <div class="btn btn-outline" role="alert">Django</div>
               <!-- Celery -->
-              <div class="btn btn-outline text-white" role="alert">Celery</div>
+              <div class="btn btn-outline" role="alert">Celery</div>
               <!-- React -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/react-native.png"
                 />
                 React
               </div>
               <!-- PyTorch -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 PyTorch
               </div>
               <!-- Tableau -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 Tableau
               </div>
               <!-- C -->
-              <div class="btn btn-outline text-white" role="alert">C</div>
+              <div class="btn btn-outline" role="alert">C</div>
               <!-- Java -->
-              <div class="btn btn-outline text-white" role="alert">
+              <div class="btn btn-outline" role="alert">
                 <img
                   src="https://img.icons8.com/color/30/000000/java-coffee-cup-logo--v1.png"
                 />
@@ -681,8 +766,8 @@
       </section>
 
       <section id="resume" class="py-5">
-        <div class="container text-light">
-          <h2 class="text-center text-dark">Resume</h2>
+        <div class="container">
+          <h2 class="text-center section-heading">Resume</h2>
           <div class="row">
             <!-- Left column for resume content -->
             <!-- <div class="col-md-6 text-light"> -->
@@ -709,13 +794,13 @@
               <div class="text-center">
                 <!-- Button that redirects to the PDF file -->
                 <a
-                  href="Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
+                  href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
                   class="btn btn-custom"
                   target="_blank"
                   >Open Resume</a
                 >
                 <a
-                  href="Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
+                  href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
                   download
                   class="btn btn-custom"
                   >Download Resume</a
@@ -729,13 +814,18 @@
 
       <section id="youtube" class="py-5">
         <div class="container">
-          <h2 class="text-center text-light mb-4">📺 Teaching &amp; Content</h2>
-          <p class="text-center text-muted mb-4">
+          <h2 class="text-center section-heading mb-4">📺 Teaching &amp; Content</h2>
+          <p class="text-center mb-4" style="color:var(--text-secondary)">
             Educational content for IIT Madras BS Degree students on App
             Development, Computational Thinking, and more.
           </p>
           <div class="row justify-content-center">
             <div class="col-md-4 mb-3">
+              <a
+                href="https://www.youtube.com/@shri_krishna_pandey"
+                target="_blank"
+                class="teaching-card"
+              >
               <div class="card bg-dark text-light h-100">
                 <div class="card-body text-center">
                   <h1>🎬</h1>
@@ -744,10 +834,17 @@
                     Step-by-step project report guides, viva checklists, and
                     plagiarism check walkthroughs for MAD courses.
                   </p>
+                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
                 </div>
               </div>
+              </a>
             </div>
             <div class="col-md-4 mb-3">
+              <a
+                href="https://www.youtube.com/@shri_krishna_pandey"
+                target="_blank"
+                class="teaching-card"
+              >
               <div class="card bg-dark text-light h-100">
                 <div class="card-body text-center">
                   <h1>💻</h1>
@@ -756,10 +853,17 @@
                     Live session recordings and concept explanations in both
                     English and Hindi for IITM Foundation level students.
                   </p>
+                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
                 </div>
               </div>
+              </a>
             </div>
             <div class="col-md-4 mb-3">
+              <a
+                href="https://www.youtube.com/@shri_krishna_pandey"
+                target="_blank"
+                class="teaching-card"
+              >
               <div class="card bg-dark text-light h-100">
                 <div class="card-body text-center">
                   <h1>🚀</h1>
@@ -768,8 +872,10 @@
                     Community posts, deadline guides, tips to avoid project
                     rejections, and motivational content for students.
                   </p>
+                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
                 </div>
               </div>
+              </a>
             </div>
           </div>
           <div class="text-center mt-3">
@@ -784,64 +890,100 @@
         </div>
       </section>
 
-      <footer class="bg-dark text-white py-4">
+      <section id="contact" class="py-5">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <h5>Contact Information</h5>
-              <a
-                href="mailto:shrikrishnapandey72@gmail.com"
-                class="text-blue"
-                style="text-decoration: none"
-                ><i class="far fa-envelope"></i> Email</a
-              >
+          <h2 class="text-center section-heading mb-3">📬 Get in Touch</h2>
+          <p class="text-center mb-5 contact-intro">
+            Have a question, want to collaborate, or just say hello? I'd love to hear from you.
+          </p>
+          <div class="row justify-content-center g-4">
+            <div class="col-sm-6 col-lg-3">
+              <a href="mailto:shrikrishnapandey72@gmail.com" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">shrikrishnapandey72@gmail.com</div>
+              </a>
             </div>
-            <div class="col-lg-6">
-              <h5>Let's Connect</h5>
-              <ul class="list-unstyled">
-                <li>
-                  <a
-                    href="https://www.instagram.com/shri.krishna.p/"
-                    class="text-white"
-                    ><i class="fab fa-instagram"></i> Instagram</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/shri-krishna-pandey/"
-                    class="text-white"
-                    style="text-decoration: none"
-                    ><i class="fab fa-linkedin"></i> LinkedIn</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/shrikrishna97"
-                    class="text-white"
-                    style="text-decoration: none"
-                    ><i class="fab fa-github"></i> GitHub</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.youtube.com/@shri_krishna_pandey"
-                    target="_blank"
-                    class="text-white"
-                    style="text-decoration: none"
-                    ><i class="fab fa-youtube" style="color: #ff0000"></i>
-                    YouTube</a
-                  >
-                </li>
-              </ul>
+            <div class="col-sm-6 col-lg-3">
+              <a href="https://www.linkedin.com/in/shri-krishna-pandey/" target="_blank" class="contact-card">
+                <div class="contact-icon">💼</div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">shri-krishna-pandey</div>
+              </a>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <a href="https://github.com/shrikrishna97" target="_blank" class="contact-card">
+                <div class="contact-icon">🐱</div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">shrikrishna97</div>
+              </a>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <a href="https://www.youtube.com/@shri_krishna_pandey" target="_blank" class="contact-card">
+                <div class="contact-icon">📺</div>
+                <div class="contact-label">YouTube</div>
+                <div class="contact-value">@shri_krishna_pandey</div>
+              </a>
             </div>
           </div>
-          <hr class="bg-light" />
-          <p class="text-center">
-            &copy; 2025 Shri Krishna🦚. All rights reserved.
+          <div class="text-center mt-5">
+            <a href="https://forms.gle/LWA1XRe2tU2jCft46" target="_blank" class="btn btn-cust btn-lg">
+              <i class="fas fa-paper-plane me-2"></i>Send me a message
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer bg-dark text-white py-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+              <h5><i class="fas fa-user-circle me-2"></i>Shri Krishna Pandey</h5>
+              <p class="footer-tagline">IITM Alumnus · Course Instructor · Web Developer · Python Programmer</p>
+              <a href="mailto:shrikrishnapandey72@gmail.com" class="footer-social-link">
+                <i class="far fa-envelope"></i> shrikrishnapandey72@gmail.com
+              </a>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled" style="font-size:0.9rem;">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievement">Achievements</a></li>
+                <li><a href="#youtube">Teaching &amp; Content</a></li>
+                <li><a href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf" target="_blank">Resume (PDF)</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <h5>Let's Connect</h5>
+              <a href="https://www.linkedin.com/in/shri-krishna-pandey/" target="_blank" class="footer-social-link">
+                <i class="fab fa-linkedin" style="color:#0a66c2"></i> LinkedIn
+              </a>
+              <a href="https://github.com/shrikrishna97" target="_blank" class="footer-social-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://www.youtube.com/@shri_krishna_pandey" target="_blank" class="footer-social-link">
+                <i class="fab fa-youtube" style="color:#ff0000"></i> YouTube
+              </a>
+              <a href="https://www.instagram.com/shri.krishna.p/" target="_blank" class="footer-social-link">
+                <i class="fab fa-instagram" style="color:#e1306c"></i> Instagram
+              </a>
+              <a href="https://forms.gle/LWA1XRe2tU2jCft46" target="_blank" class="footer-social-link">
+                <i class="fas fa-paper-plane" style="color:var(--accent-cyan)"></i> Contact Me
+              </a>
+            </div>
+          </div>
+          <hr class="footer-divider" />
+          <p class="footer-copy">
+            &copy; 2025 Shri Krishna🦚. All rights reserved. &nbsp;|&nbsp; Built with ❤️ for students.
           </p>
         </div>
       </footer>
     </div>
+
+    <!-- Back-to-top button -->
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">&#8679;</button>
 
     <script src="script.js"></script>
     <script>
