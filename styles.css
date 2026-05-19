@@ -27,6 +27,8 @@
   /* Misc */
   --border-color:   rgba(255, 255, 255, 0.1);
   --shadow:         0px 0px 14px rgba(0, 180, 216, 0.15);
+  /* Navbar links always stay light (navbar bg is always dark) */
+  --navbar-link-color: #e0e0e0;
 }
 
 /* Light-mode overrides */
@@ -136,7 +138,7 @@ body {
 }
 
 .nav-link {
-  color: var(--text-primary) !important;
+  color: var(--navbar-link-color) !important;
   transition: color 0.2s ease;
 }
 
@@ -149,6 +151,20 @@ body {
   margin-left: 12px;
   display: flex;
   align-items: center;
+}
+
+/* Light mode: navbar stays dark, so keep nav text light */
+body.light-mode .navbar .nav-link {
+  color: var(--navbar-link-color) !important;
+}
+
+body.light-mode .navbar .nav-link:hover,
+body.light-mode .navbar .nav-link.nav-active {
+  color: var(--accent-cyan) !important;
+}
+
+body.light-mode .navbar-brand {
+  color: var(--navbar-link-color) !important;
 }
 
 /* ============================================================
@@ -263,31 +279,31 @@ h2.text-center {
 }
 
 /* ============================================================
-   RESUME LIFTED IMAGE
+   RESUME SECTION
    ============================================================ */
 .lifted-image {
   width: 100%;
-  max-width: 600px;
-  height: 250px;
+  max-width: 560px;
+  height: 240px;
   background-image: url("static/Resume_photo.png");
   background-size: cover;
   background-position: center;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: lift 2s ease-in-out forwards;
-  opacity: 0.5;
+  border-radius: 8px;
+  margin: 0 auto 28px;
+  display: block;
+  animation: lift 1.2s ease-in-out forwards;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  position: relative;
 }
 
 .lifted-image:hover {
-  opacity: 0;
+  opacity: 0.6 !important;
 }
 
 @keyframes lift {
-  0%   { bottom: -200px; opacity: 0.5; }
-  100% { bottom: 0;      opacity: 0.9; }
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0.9; transform: translateY(0); }
 }
 
 /* ============================================================
@@ -649,6 +665,187 @@ section, .section-with-background {
 }
 
 /* ============================================================
+   ACHIEVEMENT CARDS — clickable indicators
+   ============================================================ */
+.achievement-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.achievement-card-link .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.achievement-card-link:hover .card {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  text-decoration: none;
+  color: inherit;
+}
+
+.achievement-card-link .card::after {
+  content: "View Details →";
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.achievement-card-static .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement-card-static .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 180, 216, 0.12);
+}
+
+/* ============================================================
+   BLOGS SECTION
+   ============================================================ */
+#blogs {
+  background-color: var(--bg-secondary);
+}
+
+.blog-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px 20px 18px;
+  text-decoration: none;
+  color: var(--text-primary);
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.blog-card .blog-tag {
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.blog-card h5 {
+  color: var(--text-heading);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.blog-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+.blog-card .blog-read-link {
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* ============================================================
+   PODCASTS & ACTIVITIES SECTION
+   ============================================================ */
+#activities {
+  background-color: var(--bg-experience);
+}
+
+.podcast-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.podcast-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.25);
+}
+
+.podcast-embed {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+
+.podcast-embed iframe {
+  display: block;
+  border-radius: 0;
+}
+
+.podcast-info {
+  padding: 18px 20px 20px;
+}
+
+.podcast-tag {
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: rgba(244, 162, 97, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.podcast-info h5 {
+  color: var(--text-heading);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.podcast-info p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+.podcast-link {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border: 1px solid var(--accent-cyan);
+  padding: 4px 12px;
+  border-radius: 16px;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+
+.podcast-link:hover {
+  background: var(--accent-cyan);
+  color: #0d1b2a;
+  text-decoration: none;
+}
+
+/* ============================================================
    CONTACT SECTION
    ============================================================ */
 #contact {
@@ -699,4 +896,137 @@ section, .section-with-background {
   font-size: 0.83rem;
   color: var(--text-secondary);
   word-break: break-all;
+}
+
+/* ============================================================
+   STATUS BADGE (hero — "Open to collaborations")
+   ============================================================ */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6);
+  animation: pulse-green 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-green {
+  0%   { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+  70%  { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* ============================================================
+   SKILLS — REDESIGNED (categorised grid)
+   ============================================================ */
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 22px 20px 18px;
+  height: 100%;
+  box-shadow: var(--shadow);
+}
+
+.skill-category-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-cyan);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-pill:hover {
+  background: rgba(0, 180, 216, 0.18);
+  border-color: var(--accent-cyan);
+}
+
+.skill-pill img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.skill-pill.no-icon {
+  padding: 4px 14px;
+}
+
+/* ============================================================
+   SCROLL-REVEAL ANIMATION
+   ============================================================ */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PRINT STYLES — clean resume printing
+   ============================================================ */
+@media print {
+  #section-indicator,
+  #back-to-top,
+  header,
+  footer,
+  #about, #experience, #projects, #achievement,
+  #skills-section, #youtube, #blogs, #activities, #contact {
+    display: none !important;
+  }
+  #resume {
+    display: block !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .lifted-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: auto;
+    min-height: 400px;
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }
