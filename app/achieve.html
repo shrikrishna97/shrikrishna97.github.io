@@ -4,134 +4,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include Bootstrap CSS (you can link to a CDN or use a local file) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>My Certificates and Degrees</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Certificates &amp; Achievements — Shri Krishna</title>
     <style>
-        /* Previous CSS styles ... */
+        body { background-color: #0d1b2a; color: #e0e0e0; }
 
-        /* Keyframes for fading in the certificate/degree items */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Apply the animation to the certificate/degree items */
-        .card {
+        .page-header {
+            background: linear-gradient(135deg, #0a1628, #1e3a5f);
+            padding: 28px 24px 18px;
+            border-bottom: 2px solid #00b4d8;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .page-header a.home-btn {
+            background: #00b4d8;
+            color: #0d1b2a;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .page-header a.home-btn:hover { background: #2563eb; color: #fff; }
+        .page-header h1 { margin: 0; color: #fff; font-size: 1.6rem; }
+
+        .cert-card {
             animation: fadeIn 0.5s ease-in-out;
+            background: #1e3a5f;
+            border: 1px solid rgba(0,180,216,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,180,216,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        /* Style for the container */
-        .pdf-container {
-            max-width: 100%;
-            height: auto;
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,180,216,0.25);
         }
-
-        /* Style for the embedded PDF */
-        .pdf-object {
+        .cert-card img {
             width: 100%;
-            height: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0,180,216,0.2);
         }
-    </style>
+        .cert-card .card-body { padding: 14px; }
+        .cert-card .card-title { color: #00b4d8; font-size: 1rem; margin-bottom: 4px; }
+        .cert-card .card-text { color: #90a4ae; font-size: 0.85rem; }
 
+        footer { background: #0a1628; border-top: 1px solid rgba(0,180,216,0.2); }
+        footer a { transition: color 0.2s; }
+        footer a:hover { color: #00b4d8 !important; }
+    </style>
 </head>
 
 <body>
-    <!-- Header Section -->
-    <header class="bg-dark text-white text-center py-5">
-        <h1>My Certificates and Degrees</h1>
-    </header>
+    <!-- Header with Home navigation -->
+    <div class="page-header">
+        <a href="../index.html" class="home-btn">← Home</a>
+        <h1>🏆 Certificates &amp; Achievements</h1>
+    </div>
 
-    <!-- Certificates and Degrees Section -->
+    <!-- Certificates Grid -->
     <section class="py-5">
         <div class="container">
-            <div class="row">
-
-                <!-- Certificate/Degree items will be added dynamically by JavaScript -->
+            <div class="row g-4" id="cert-grid">
+                <!-- Certificates injected by JS below -->
             </div>
         </div>
     </section>
-    
-    <footer class="bg-dark text-white py-4">
+
+    <footer class="text-white py-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h5>Contact Information</h5>
-                    <p>Email: shrikrishnapandey72@gmail.com</p>
-                    <p>Phone: 9993688046</p>
+                <div class="col-lg-6 mb-3">
+                    <h5>Contact</h5>
+                    <a href="mailto:shrikrishnapandey72@gmail.com" class="text-white" style="text-decoration:none;">
+                        <i class="far fa-envelope"></i> shrikrishnapandey72@gmail.com
+                    </a>
                 </div>
                 <div class="col-lg-6">
-                    <h5>Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Facebook</a></li>
-                        <li><a href="#" class="text-white">Twitter</a></li>
-                        <li><a href="#" class="text-white">Instagram</a></li>
+                    <h5>Connect</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.linkedin.com/in/shri-krishna-pandey/" class="text-white" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://github.com/shrikrishna97" class="text-white" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="https://www.youtube.com/@shri_krishna_pandey" class="text-white" target="_blank"><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</a></li>
+                        <li><a href="https://www.instagram.com/shri.krishna.p/" class="text-white" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
             </div>
-            <hr class="bg-light">
-            <p class="text-center">&copy; 2023 Shri Krishna🦚. All rights reserved.</p>
+            <hr style="border-color: rgba(0,180,216,0.3);">
+            <p class="text-center mb-0">&copy; 2025 Shri Krishna🦚. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Include Bootstrap JavaScript (optional) -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <!-- JavaScript Function -->
     <script>
-        // Function to add a certificate/degree item dynamically
-        function addCertificate(imageURL, title, description) {
-            var container = document.querySelector('.container'); // Get the container element
+        var certificates = [
+            {
+                image: '../static/certificate/Consumer Psychology_page1.png',
+                title: 'Consumer Psychology',
+                description: 'NPTEL — IIT Guwahati'
+            },
+            {
+                image: '../static/certificate/Data Mining.jpg',
+                title: 'Data Mining',
+                description: 'NPTEL Certification'
+            },
+            {
+                image: '../static/certificate/Programming diploma_page1.png',
+                title: 'Diploma in Programming',
+                description: 'IIT Madras BS Programme'
+            },
+            {
+                image: '../static/certificate/data science diploma_page1.png',
+                title: 'Diploma in Data Science',
+                description: 'IIT Madras BS Programme'
+            },
+            {
+                image: '../static/certificate/Foundational Level Certificate_page1.png',
+                title: 'Foundational Level Certificate',
+                description: 'IIT Madras BS Programme'
+            },
+            {
+                image: '../static/certificate/Java Introduction.png',
+                title: 'Introduction to Java',
+                description: 'IIT Madras / Online Course'
+            },
+            {
+                image: '../static/certificate/Introduction to Linux.png',
+                title: 'Introduction to Linux',
+                description: 'Linux Foundation / Online'
+            },
+            {
+                image: '../static/certificate/Hack-O-Pitch_Certificate_Shri Krishna_Pandey_page1.png',
+                title: 'Hack-O-Pitch Certificate',
+                description: 'Online Hackathon'
+            },
+            {
+                image: '../static/certificate/Certificate fundamental of language.jpg',
+                title: 'Fundamentals of Language',
+                description: 'Online Certification'
+            },
+            {
+                image: '../static/certificate/1.jpg',
+                title: 'PyTorch Workshop',
+                description: 'Deep Learning Workshop'
+            }
+        ];
 
-            // Create a new certificate/degree item
-            var certificateItem = document.createElement('div');
-            certificateItem.classList.add('col-mb-4', 'mb-4');
-
-
-            var card = document.createElement('div');
-            card.classList.add('card');
-
-            var cardBody = document.createElement('div');
-            cardBody.classList.add('card-body');
-
-            var cardTitle = document.createElement('h5');
-            cardTitle.classList.add('card-title');
-            cardTitle.textContent = title;
-
-            var cardText = document.createElement('p');
-            cardText.classList.add('card-text');
-            cardText.textContent = description;
-
-            var certificateImage = document.createElement('img');
-            certificateImage.setAttribute('src', imageURL);
-            certificateImage.setAttribute('alt', 'Certificate');
-            certificateImage.classList.add('img-fluid', 'rounded'); 
-
-            // Append elements to the certificate/degree item
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
-            card.appendChild(certificateImage);
-            card.appendChild(cardBody);
-            certificateItem.appendChild(card);
-
-            // Add the certificate/degree item to the container
-            container.appendChild(certificateItem);
-        }
-
-        // Usage example:
-        // Replace 'your-image.jpg' with the actual image URL, and customize the title and description.
-        addCertificate('../static/certificate/Consumer Psychology_page1.png', 'Certificate in Consumer Psychology ', 'From NPTEL by IIT Guwahati');
-        addCertificate('../static/certificate/Data Mining.jpg', 'Certificate/Degree Title', 'Description of the certificate or degree.');
-        addCertificate('../static/certificate/Programming diploma_page1.png', 'Certificate/Degree Title', 'Description of the certificate or degree.');
-
+        var grid = document.getElementById('cert-grid');
+        certificates.forEach(function (cert) {
+            var col = document.createElement('div');
+            col.className = 'col-sm-6 col-md-4 col-lg-3';
+            col.innerHTML =
+                '<div class="cert-card h-100">' +
+                    '<img src="' + cert.image + '" alt="' + cert.title + '" ' +
+                         'onerror="this.style.display=\'none\'">' +
+                    '<div class="card-body">' +
+                        '<h6 class="card-title">' + cert.title + '</h6>' +
+                        '<p class="card-text">' + cert.description + '</p>' +
+                    '</div>' +
+                '</div>';
+            grid.appendChild(col);
+        });
     </script>
 </body>
 
