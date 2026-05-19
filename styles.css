@@ -151,6 +151,20 @@ body {
   align-items: center;
 }
 
+/* Light mode: navbar stays dark, so keep nav text light */
+body.light-mode .navbar .nav-link {
+  color: #e0e0e0 !important;
+}
+
+body.light-mode .navbar .nav-link:hover,
+body.light-mode .navbar .nav-link.nav-active {
+  color: var(--accent-cyan) !important;
+}
+
+body.light-mode .navbar-brand {
+  color: #ffffff !important;
+}
+
 /* ============================================================
    BUTTONS
    ============================================================ */
@@ -263,31 +277,31 @@ h2.text-center {
 }
 
 /* ============================================================
-   RESUME LIFTED IMAGE
+   RESUME SECTION
    ============================================================ */
 .lifted-image {
   width: 100%;
-  max-width: 600px;
-  height: 250px;
+  max-width: 560px;
+  height: 240px;
   background-image: url("static/Resume_photo.png");
   background-size: cover;
   background-position: center;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: lift 2s ease-in-out forwards;
-  opacity: 0.5;
+  border-radius: 8px;
+  margin: 0 auto 28px;
+  display: block;
+  animation: lift 1.2s ease-in-out forwards;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  position: relative;
 }
 
 .lifted-image:hover {
-  opacity: 0;
+  opacity: 0.6 !important;
 }
 
 @keyframes lift {
-  0%   { bottom: -200px; opacity: 0.5; }
-  100% { bottom: 0;      opacity: 0.9; }
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0.9; transform: translateY(0); }
 }
 
 /* ============================================================
@@ -646,6 +660,106 @@ section, .section-with-background {
 .project-card .project-link:hover {
   background: var(--accent-cyan);
   color: #0d1b2a;
+}
+
+/* ============================================================
+   ACHIEVEMENT CARDS — clickable indicators
+   ============================================================ */
+.achievement-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.achievement-card-link .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.achievement-card-link:hover .card {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  text-decoration: none;
+  color: inherit;
+}
+
+.achievement-card-link .card::after {
+  content: "View Details →";
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.achievement-card-static .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement-card-static .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 180, 216, 0.12);
+}
+
+/* ============================================================
+   BLOGS SECTION
+   ============================================================ */
+#blogs {
+  background-color: var(--bg-secondary);
+}
+
+.blog-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px 20px 18px;
+  text-decoration: none;
+  color: var(--text-primary);
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.blog-card .blog-tag {
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  display: inline-block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.blog-card h5 {
+  color: var(--text-heading);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.blog-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+.blog-card .blog-read-link {
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
 }
 
 /* ============================================================

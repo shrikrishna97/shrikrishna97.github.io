@@ -102,6 +102,9 @@
                 <a class="nav-link" href="#contact">Contact</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#blogs">Blogs</a>
+              </li>
+              <li class="nav-item">
                 <a
                   class="nav-link"
                   href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
@@ -152,6 +155,10 @@
         <a href="#youtube" class="sec-dot" data-section="youtube">
           <span class="sec-dot-circle"></span>
           <span class="sec-dot-label">Teaching</span>
+        </a>
+        <a href="#blogs" class="sec-dot" data-section="blogs">
+          <span class="sec-dot-circle"></span>
+          <span class="sec-dot-label">Blogs</span>
         </a>
         <a href="#contact" class="sec-dot" data-section="contact">
           <span class="sec-dot-circle"></span>
@@ -565,12 +572,12 @@
           <h2 class="text-center section-heading">
             Achievements and Certifications
           </h2>
-          <div class="row mt-4">
-            <div
-              class="col-md-6 mb-3"
-              onclick="openNewPage('app/achieve.html')"
-              style="cursor: pointer"
-            >
+          <p class="text-center mb-4" style="color:var(--text-secondary);font-size:0.88rem;">
+            🔗 Click any card to explore details
+          </p>
+          <div class="row mt-2">
+            <div class="col-md-6 mb-3">
+              <a href="app/achieve.html" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">🏆 Certifications</h5>
@@ -582,12 +589,10 @@
                   </p>
                 </div>
               </div>
+              </a>
             </div>
-            <div
-              class="col-md-6 mb-3"
-              onclick="openNewPage('app/internship.html')"
-              style="cursor: pointer"
-            >
+            <div class="col-md-6 mb-3">
+              <a href="app/internship.html" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">💼 Internship &amp; Teaching Work</h5>
@@ -599,8 +604,10 @@
                   </p>
                 </div>
               </div>
+              </a>
             </div>
             <div class="col-md-6 mb-3">
+              <a href="app/education/educ.html" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">🎓 IIT Madras BS Degree</h5>
@@ -615,8 +622,10 @@
                   </p>
                 </div>
               </div>
+              </a>
             </div>
             <div class="col-md-6 mb-3">
+              <a href="https://www.linkedin.com/groups/12728067/" target="_blank" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">🌐 Community Building</h5>
@@ -629,6 +638,7 @@
                   </p>
                 </div>
               </div>
+              </a>
             </div>
           </div>
         </div>
@@ -767,47 +777,24 @@
 
       <section id="resume" class="py-5">
         <div class="container">
-          <h2 class="text-center section-heading">Resume</h2>
-          <div class="row">
-            <!-- Left column for resume content -->
-            <!-- <div class="col-md-6 text-light"> -->
-            <!-- Resume content goes here -->
-            <p>
-              Explore my academic and career journey, highlighting my
-              qualifications, skills, and achievements.
-            </p>
-            <!-- Add more content as needed -->
-            <div class="container">
-              <div class="lifted-image"></div>
-            </div>
-            <!-- </div> -->
-            <!-- Right column for skills or additional information -->
-            <!-- <div class="col-md-6"> -->
-            <!-- Skills or additional information goes here -->
-            <!-- <ul>
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul> -->
-            <!-- Add more content as needed -->
-            <div class="container mt-5">
-              <div class="text-center">
-                <!-- Button that redirects to the PDF file -->
-                <a
-                  href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
-                  class="btn btn-custom"
-                  target="_blank"
-                  >Open Resume</a
-                >
-                <a
-                  href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
-                  download
-                  class="btn btn-custom"
-                  >Download Resume</a
-                >
-              </div>
-            </div>
-            <!-- </div> -->
+          <h2 class="text-center section-heading mb-3">Resume</h2>
+          <p class="text-center mb-4" style="color:var(--text-secondary);">
+            Explore my academic and career journey — qualifications, skills, and achievements at a glance.
+          </p>
+          <div class="lifted-image"></div>
+          <div class="text-center mt-2">
+            <a
+              href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
+              class="btn btn-custom me-2"
+              target="_blank"
+              >📄 Open Resume</a
+            >
+            <a
+              href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf"
+              download
+              class="btn btn-custom"
+              >⬇️ Download Resume</a
+            >
           </div>
         </div>
       </section>
@@ -822,7 +809,7 @@
           <div class="row justify-content-center">
             <div class="col-md-4 mb-3">
               <a
-                href="https://www.youtube.com/@shri_krishna_pandey"
+                href="https://www.youtube.com/@shri_krishna_pandey/playlists"
                 target="_blank"
                 class="teaching-card"
               >
@@ -834,14 +821,14 @@
                     Step-by-step project report guides, viva checklists, and
                     plagiarism check walkthroughs for MAD courses.
                   </p>
-                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
+                  <span class="btn btn-sm btn-custom mt-2">▶️ Watch Playlist →</span>
                 </div>
               </div>
               </a>
             </div>
             <div class="col-md-4 mb-3">
               <a
-                href="https://www.youtube.com/@shri_krishna_pandey"
+                href="https://www.youtube.com/@shri_krishna_pandey/playlists"
                 target="_blank"
                 class="teaching-card"
               >
@@ -853,14 +840,14 @@
                     Live session recordings and concept explanations in both
                     English and Hindi for IITM Foundation level students.
                   </p>
-                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
+                  <span class="btn btn-sm btn-custom mt-2">▶️ Watch Playlist →</span>
                 </div>
               </div>
               </a>
             </div>
             <div class="col-md-4 mb-3">
               <a
-                href="https://www.youtube.com/@shri_krishna_pandey"
+                href="https://www.youtube.com/@shri_krishna_pandey/playlists"
                 target="_blank"
                 class="teaching-card"
               >
@@ -872,7 +859,7 @@
                     Community posts, deadline guides, tips to avoid project
                     rejections, and motivational content for students.
                   </p>
-                  <span class="btn btn-sm btn-custom mt-2">Watch on YouTube →</span>
+                  <span class="btn btn-sm btn-custom mt-2">▶️ Watch Playlist →</span>
                 </div>
               </div>
               </a>
@@ -885,6 +872,73 @@
               class="btn btn-danger btn-lg"
             >
               <i class="fab fa-youtube"></i> Visit YouTube Channel
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="blogs" class="py-5">
+        <div class="container">
+          <h2 class="text-center section-heading mb-2">📝 Blogs &amp; Articles</h2>
+          <p class="text-center mb-5" style="color:var(--text-secondary)">
+            Thoughts on education, technology, and the IITM BS journey — published on LinkedIn &amp; Google Sites.
+          </p>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="blog-card">
+                <span class="blog-tag">Google Sites</span>
+                <h5>My Blog — shrikrishna97</h5>
+                <p>A collection of articles on IITM BS Programme experiences, study tips, app development tutorials, and the life of a course instructor and mentor.</p>
+                <span class="blog-read-link">Read on Google Sites →</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.linkedin.com/in/shri-krishna-pandey/recent-activity/articles/" target="_blank" class="blog-card">
+                <span class="blog-tag">LinkedIn</span>
+                <h5>LinkedIn Articles &amp; Posts</h5>
+                <p>Professional insights, teaching experiences, IITM BS exam strategies, and community updates shared with 900+ LinkedIn group members.</p>
+                <span class="blog-read-link">Read on LinkedIn →</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="blog-card">
+                <span class="blog-tag">Teaching</span>
+                <h5>App Development &amp; Flask Guides</h5>
+                <p>Step-by-step walkthroughs for IITM MAD1 &amp; MAD2 — project setup, viva preparation, common mistakes, and deployment tips for students.</p>
+                <span class="blog-read-link">Read Blog →</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="blog-card">
+                <span class="blog-tag">Data Science</span>
+                <h5>Data Science Notes &amp; Resources</h5>
+                <p>Notes from the IITM BS Data Science curriculum — machine learning concepts, Python programming, and practical project insights.</p>
+                <span class="blog-read-link">Read Blog →</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://www.linkedin.com/in/shri-krishna-pandey/recent-activity/posts/" target="_blank" class="blog-card">
+                <span class="blog-tag">Community</span>
+                <h5>IITM BS Student Community Updates</h5>
+                <p>Announcements, motivation, deadline reminders, and tips for IITM BS students — shared via WhatsApp, LinkedIn, and Telegram communities.</p>
+                <span class="blog-read-link">View on LinkedIn →</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <a href="https://sites.google.com/view/shrikrishna97" target="_blank" class="blog-card">
+                <span class="blog-tag">Portfolio</span>
+                <h5>My Google Sites Portfolio</h5>
+                <p>Explore my full portfolio on Google Sites — including projects, educational journey, certificates, and detailed blog posts about my work.</p>
+                <span class="blog-read-link">Visit Site →</span>
+              </a>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="btn btn-cust btn-lg me-3">
+              <i class="fas fa-blog me-2"></i>Read All Blogs
+            </a>
+            <a href="https://www.linkedin.com/in/shri-krishna-pandey/" target="_blank" class="btn btn-custom btn-lg">
+              <i class="fab fa-linkedin me-2"></i>Follow on LinkedIn
             </a>
           </div>
         </div>
@@ -952,6 +1006,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#achievement">Achievements</a></li>
                 <li><a href="#youtube">Teaching &amp; Content</a></li>
+                <li><a href="#blogs">Blogs &amp; Articles</a></li>
                 <li><a href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf" target="_blank">Resume (PDF)</a></li>
               </ul>
             </div>
