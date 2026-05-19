@@ -22,17 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── CodeMirror (optional) ─────────────────────────────────────
-    var textarea = document.getElementById('code');
-    if (textarea && typeof CodeMirror !== 'undefined') {
-        var editor = CodeMirror.fromTextArea(textarea, {
-            mode: 'javascript',
-            theme: 'default',
-            lineNumbers: true
-        });
-        editor.setValue('// Your code here');
-    }
-
     // ── Section scroll indicator ──────────────────────────────────
     var sectionIds = ['about', 'experience', 'projects', 'achievement', 'skills-section', 'resume', 'youtube', 'blogs', 'activities', 'contact'];
     var dots = document.querySelectorAll('#section-indicator .sec-dot');
