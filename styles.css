@@ -62,7 +62,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -207,14 +207,14 @@ h2.text-center {
    ABOUT SECTION
    ============================================================ */
 .professional-heading {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: var(--text-heading);
 }
 
 .professional-paragraph {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5;
   color: var(--text-secondary);
@@ -646,4 +646,57 @@ section, .section-with-background {
 .project-card .project-link:hover {
   background: var(--accent-cyan);
   color: #0d1b2a;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+#contact {
+  background-color: var(--bg-secondary);
+}
+
+.contact-intro {
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.25);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.contact-value {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  word-break: break-all;
 }

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ── Section scroll indicator ──────────────────────────────────
-    var sectionIds = ['about', 'experience', 'projects', 'achievement', 'skills-section', 'resume', 'youtube'];
+    var sectionIds = ['about', 'experience', 'projects', 'achievement', 'skills-section', 'resume', 'youtube', 'contact'];
     var dots = document.querySelectorAll('#section-indicator .sec-dot');
 
     function getActiveSection() {
@@ -49,6 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // ── Active navbar link on scroll ─────────────────────────────
     var navLinks = document.querySelectorAll('.navbar .nav-link[href^="#"]');
 
+    var sectionTitles = {
+        'about':         'Shri Krishna🦚',
+        'experience':    'Experience | Shri Krishna🦚',
+        'projects':      'Projects | Shri Krishna🦚',
+        'achievement':   'Achievements | Shri Krishna🦚',
+        'skills-section':'Skills | Shri Krishna🦚',
+        'resume':        'Resume | Shri Krishna🦚',
+        'youtube':       'Teaching | Shri Krishna🦚',
+        'contact':       'Contact | Shri Krishna🦚'
+    };
+
     function updateNavLinks() {
         var active = getActiveSection();
         navLinks.forEach(function (link) {
@@ -59,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.classList.remove('nav-active');
             }
         });
+        if (sectionTitles[active]) {
+            document.title = sectionTitles[active];
+        }
     }
 
     // ── Back-to-top button ────────────────────────────────────────
