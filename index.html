@@ -6,6 +6,7 @@
 
     <!-- SEO & social preview -->
     <meta name="description" content="Portfolio of Shri Krishna Pandey — IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder." />
+    <link rel="canonical" href="https://shrikrishna97.github.io/" />
     <meta property="og:title" content="Shri Krishna Pandey — IITM Alumnus &amp; Full-Stack Developer" />
     <meta property="og:description" content="Portfolio of Shri Krishna Pandey — IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder." />
     <meta property="og:type" content="website" />
@@ -58,6 +59,33 @@
       }
     </style>
     <title>Shri Krishna🦚</title>
+
+    <!-- Schema.org Person structured data (rich search results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shri Krishna Pandey",
+      "url": "https://shrikrishna97.github.io/",
+      "image": "https://shrikrishna97.github.io/static/sk.jpg",
+      "jobTitle": "Course Instructor & Full-Stack Developer",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "IIT Madras",
+        "url": "https://www.iitm.ac.in/"
+      },
+      "email": "shrikrishnapandey72@gmail.com",
+      "sameAs": [
+        "https://in.linkedin.com/in/shri-krishna-pandey",
+        "https://github.com/shrikrishna97",
+        "https://www.youtube.com/@shri_krishna_pandey",
+        "https://www.instagram.com/shri.krishna.p/",
+        "https://sites.google.com/view/shrikrishna97"
+      ],
+      "knowsAbout": ["Python", "Flask", "Vue.js", "React", "Data Science", "Machine Learning", "Web Development", "Teaching"],
+      "description": "IITM Alumnus, Course Instructor at IIT Madras, Full-Stack Developer, and community builder who has mentored 300+ students."
+    }
+    </script>
   </head>
 
   <body>
@@ -176,6 +204,9 @@
             <div class="row">
               <div class="col-lg-6">
                 <h2 class="professional-heading">Namaste 🙏</h2>
+                <div class="status-badge">
+                  <span class="status-dot"></span> Open to teaching roles &amp; collaborations
+                </div>
                 <p class="typing-tagline" id="typing-tagline"><span class="typing-cursor"></span></p>
                 <p class="professional-paragraph">
                   I'm <strong>Shri Krishna Pandey</strong> — an IITM Alumnus,
@@ -190,7 +221,7 @@
                   website that has crossed <strong>80,000+ hits</strong>.
                 </p>
                 <a href="app/education/educ.html" class="btn btn-cust"
-                  >Wanna know more about my educational journey...</a
+                  >Explore My Educational Journey →</a
                 >
               </div>
               <div class="col-lg-6">
@@ -198,8 +229,9 @@
                   <div class="image-container">
                     <img
                       src="app/components/certificate photo.jpg"
-                      alt="Shri Krishna🦚"
+                      alt="Shri Krishna receiving diploma certificate at IIT Madras SAC auditorium"
                       class="img-fluid rounded"
+                      loading="lazy"
                     />
 
                     <div class="overlay">
@@ -284,6 +316,7 @@
                 src="https://github.com/shrikrishna97/TracKKaroo_v1/blob/main/TracKKaroo/static/innerpage.jpg?raw=true"
                 class="d-block w-100"
                 alt="TracKKaroo v2"
+                loading="lazy"
                 style="max-height: 500px; object-fit: cover"
               />
               <div
@@ -318,6 +351,7 @@
                 src="https://github.com/shrikrishna97/TracKKaroo_v1/blob/main/TracKKaroo/static/158867.jpg?raw=true"
                 class="d-block w-100"
                 alt="TracKKaroo v1"
+                loading="lazy"
                 style="max-height: 500px; object-fit: cover"
               />
               <div
@@ -350,6 +384,7 @@
                 src="static/bdm_project.png"
                 class="d-block w-100"
                 alt="MKP Store Analysis"
+                loading="lazy"
                 style="max-height: 500px; object-fit: cover"
               />
               <div
@@ -653,127 +688,85 @@
         <div class="container">
           <div class="row">
             <div class="col text-center">
-              <h2 class="fw-light section-heading">Software/Tools</h2>
+              <h2 class="fw-light section-heading">Skills &amp; Technologies</h2>
+              <p class="mb-5" style="color:var(--text-secondary)">Tools and technologies I use to build, teach, and analyse.</p>
             </div>
           </div>
-          <div class="row my-5" id="software">
-            <div class="col">
-              <!-- HTML -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/html-5--v1.png"
-                />
-                HTML
+          <div class="row g-4" id="software">
+            <!-- Languages -->
+            <div class="col-lg-4">
+              <div class="skill-category">
+                <h6 class="skill-category-title">🖊️ Languages</h6>
+                <div class="skill-pills">
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/python--v1.png" alt="Python" loading="lazy" />Python
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/javascript--v1.png" alt="JavaScript" loading="lazy" />JavaScript
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/java-coffee-cup-logo--v1.png" alt="Java" loading="lazy" />Java
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/ios-filled/28/sql.png" alt="SQL" loading="lazy" style="filter:contrast(0) brightness(5)" />SQL
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/html-5--v1.png" alt="HTML5" loading="lazy" />HTML5
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/css3.png" alt="CSS3" loading="lazy" />CSS3
+                  </div>
+                  <div class="skill-pill no-icon">C</div>
+                </div>
               </div>
-              <!-- CSS -->
-              <div class="btn btn-outline" role="alert">
-                <img src="https://img.icons8.com/color/30/000000/css3.png" />
-                CSS
+            </div>
+            <!-- Frameworks & Libraries -->
+            <div class="col-lg-4">
+              <div class="skill-category">
+                <h6 class="skill-category-title">⚙️ Frameworks &amp; Libraries</h6>
+                <div class="skill-pills">
+                  <div class="skill-pill no-icon">Flask</div>
+                  <div class="skill-pill no-icon">Django</div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/react-native.png" alt="React" loading="lazy" />React
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/28/external-vuejs-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-logo-shadow-tal-revivo.png" alt="Vue.js" loading="lazy" />Vue.js
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/nodejs.png" alt="Node.js" loading="lazy" />Node.js
+                  </div>
+                  <div class="skill-pill no-icon">Express</div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/bootstrap.png" alt="Bootstrap" loading="lazy" />Bootstrap
+                  </div>
+                  <div class="skill-pill no-icon">Celery</div>
+                  <div class="skill-pill no-icon">SKLearn</div>
+                  <div class="skill-pill no-icon">Pandas</div>
+                  <div class="skill-pill no-icon">NumPy</div>
+                  <div class="skill-pill no-icon">PyTorch</div>
+                </div>
               </div>
-              <!-- JavaScript -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/javascript--v1.png"
-                />
-                JS
-              </div>
-              <!-- Python -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/python--v1.png"
-                />
-                Python
-              </div>
-              <!-- Flask -->
-              <div class="btn btn-outline" role="alert">Flask</div>
-              <!-- SKLearn -->
-              <div class="btn btn-outline" role="alert">
-                <!-- <img src="sklearn.png" /> -->
-                SKLearn
-              </div>
-              <!-- Numpy -->
-              <div class="btn btn-outline" role="alert">Numpy</div>
-              <!-- Pandas -->
-              <div class="btn btn-outline" role="alert">Pandas</div>
-              <!-- Android (Java)
-                    <div class="btn btn-outline" role="alert">
-                        <img src="https://img.icons8.com/color/30/000000/android-os.png" /> Android (Java)
-                    </div> -->
-              <!-- SQL -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/ios-filled/30/000000/sql.png"
-                  style="filter: contrast(0) brightness(5)"
-                />
-                SQL
-              </div>
-              <!-- Microsoft Excel -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/microsoft-excel-2019--v1.png"
-                />
-                Microsoft Excel
-              </div>
-              <!-- Redis -->
-              <div class="btn btn-outline" role="alert">
-                <img src="https://img.icons8.com/color/30/000000/redis.png" />
-                Redis
-              </div>
-              <!-- Postgres -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/?size=1x&id=38561&format=png"
-                />
-                Postgres
-              </div>
-              <!-- Node.js -->
-              <div class="btn btn-outline" role="alert">
-                <img src="https://img.icons8.com/color/30/000000/nodejs.png" />
-                Node JS
-              </div>
-              <!-- Vue.js -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/30/000000/external-vuejs-an-open-source-javascript-framework-for-building-user-interfaces-and-single-page-applications-logo-shadow-tal-revivo.png"
-                />
-                Vue JS
-              </div>
-              <!-- Express -->
-              <div class="btn btn-outline" role="alert">Express</div>
-              <!-- Bootstrap -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/bootstrap.png"
-                />
-                Bootstrap
-              </div>
-              <!-- Django -->
-              <div class="btn btn-outline" role="alert">Django</div>
-              <!-- Celery -->
-              <div class="btn btn-outline" role="alert">Celery</div>
-              <!-- React -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/react-native.png"
-                />
-                React
-              </div>
-              <!-- PyTorch -->
-              <div class="btn btn-outline" role="alert">
-                PyTorch
-              </div>
-              <!-- Tableau -->
-              <div class="btn btn-outline" role="alert">
-                Tableau
-              </div>
-              <!-- C -->
-              <div class="btn btn-outline" role="alert">C</div>
-              <!-- Java -->
-              <div class="btn btn-outline" role="alert">
-                <img
-                  src="https://img.icons8.com/color/30/000000/java-coffee-cup-logo--v1.png"
-                />
-                Java
+            </div>
+            <!-- Tools & Databases -->
+            <div class="col-lg-4">
+              <div class="skill-category">
+                <h6 class="skill-category-title">🗄️ Databases &amp; Tools</h6>
+                <div class="skill-pills">
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/?size=28&id=38561&format=png" alt="PostgreSQL" loading="lazy" />PostgreSQL
+                  </div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/redis.png" alt="Redis" loading="lazy" />Redis
+                  </div>
+                  <div class="skill-pill no-icon">SQLite</div>
+                  <div class="skill-pill">
+                    <img src="https://img.icons8.com/color/28/microsoft-excel-2019--v1.png" alt="Microsoft Excel" loading="lazy" />Excel
+                  </div>
+                  <div class="skill-pill no-icon">Tableau</div>
+                  <div class="skill-pill no-icon">Git</div>
+                  <div class="skill-pill no-icon">Linux</div>
+                </div>
               </div>
             </div>
           </div>
@@ -906,19 +899,19 @@
               </a>
             </div>
             <div class="col-md-6 col-lg-4">
-              <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="blog-card">
+              <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="blog-card">
                 <span class="blog-tag">Teaching</span>
                 <h5>App Development &amp; Flask Guides</h5>
-                <p>Step-by-step walkthroughs for IITM MAD1 &amp; MAD2 — project setup, viva preparation, common mistakes, and deployment tips for students.</p>
-                <span class="blog-read-link">Read Blog →</span>
+                <p>Step-by-step resources for IITM MAD1 &amp; MAD2 — project setup, viva preparation, common mistakes, and deployment tips. ⭐ 79 stars on GitHub.</p>
+                <span class="blog-read-link">View on GitHub →</span>
               </a>
             </div>
             <div class="col-md-6 col-lg-4">
-              <a href="https://sites.google.com/view/shrikrishna97/blog" target="_blank" class="blog-card">
+              <a href="https://github.com/shrikrishna97/Computational-Thinking" target="_blank" class="blog-card">
                 <span class="blog-tag">Data Science</span>
-                <h5>Data Science Notes &amp; Resources</h5>
-                <p>Notes from the IITM BS Data Science curriculum — machine learning concepts, Python programming, and practical project insights.</p>
-                <span class="blog-read-link">Read Blog →</span>
+                <h5>Data Science &amp; Comp Thinking Notes</h5>
+                <p>Notes and code from the IITM BS curriculum — machine learning concepts, Python programming, Computational Thinking assignments and practical examples.</p>
+                <span class="blog-read-link">View on GitHub →</span>
               </a>
             </div>
             <div class="col-md-6 col-lg-4">
@@ -1108,12 +1101,6 @@
       function openNewPage(newPageUrl) {
         window.location.href = newPageUrl;
       }
-
-      // Toggle light/dark mode via CSS variables (dark is the default)
-      const modeToggleCheckbox = document.getElementById('flexSwitchCheckDefault');
-      modeToggleCheckbox.addEventListener('change', function () {
-        document.body.classList.toggle('light-mode', this.checked);
-      });
     </script>
   </body>
 </html>

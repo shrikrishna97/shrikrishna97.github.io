@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ── Persist dark/light mode preference ───────────────────────
+    var modeToggleCheckbox = document.getElementById('flexSwitchCheckDefault');
+    if (modeToggleCheckbox) {
+        var savedMode = localStorage.getItem('colorMode');
+        if (savedMode === 'light') {
+            document.body.classList.add('light-mode');
+            modeToggleCheckbox.checked = true;
+        }
+        modeToggleCheckbox.addEventListener('change', function () {
+            document.body.classList.toggle('light-mode', this.checked);
+            localStorage.setItem('colorMode', this.checked ? 'light' : 'dark');
+        });
+    }
+
     // ── Bootstrap Carousel ────────────────────────────────────────
     var carouselEl = document.getElementById('projectCarousel');
     if (carouselEl) {
@@ -139,6 +153,26 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(type, delay);
         }
         setTimeout(type, 600);
+    }
+
+    // ── Scroll-reveal animations (IntersectionObserver) ──────────
+    if ('IntersectionObserver' in window) {
+        var revealElements = document.querySelectorAll(
+            '.card, .project-card, .blog-card, .podcast-card, .contact-card'
+        );
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(function (el) {
+            el.classList.add('reveal-hidden');
+            revealObserver.observe(el);
+        });
     }
 });
 

@@ -897,3 +897,136 @@ section, .section-with-background {
   color: var(--text-secondary);
   word-break: break-all;
 }
+
+/* ============================================================
+   STATUS BADGE (hero — "Open to collaborations")
+   ============================================================ */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid var(--accent-cyan);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6);
+  animation: pulse-green 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-green {
+  0%   { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+  70%  { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* ============================================================
+   SKILLS — REDESIGNED (categorised grid)
+   ============================================================ */
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 22px 20px 18px;
+  height: 100%;
+  box-shadow: var(--shadow);
+}
+
+.skill-category-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-cyan);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-pill:hover {
+  background: rgba(0, 180, 216, 0.18);
+  border-color: var(--accent-cyan);
+}
+
+.skill-pill img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.skill-pill.no-icon {
+  padding: 4px 14px;
+}
+
+/* ============================================================
+   SCROLL-REVEAL ANIMATION
+   ============================================================ */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PRINT STYLES — clean resume printing
+   ============================================================ */
+@media print {
+  #section-indicator,
+  #back-to-top,
+  header,
+  footer,
+  #about, #experience, #projects, #achievement,
+  #skills-section, #youtube, #blogs, #activities, #contact {
+    display: none !important;
+  }
+  #resume {
+    display: block !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .lifted-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: auto;
+    min-height: 400px;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
