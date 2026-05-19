@@ -143,6 +143,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <h2 class="professional-heading">Namaste 🙏</h2>
+                <p class="typing-tagline" id="typing-tagline"><span class="typing-cursor"></span></p>
                 <p class="professional-paragraph">
                   I'm <strong>Shri Krishna Pandey</strong> — an IITM Alumnus,
                   Course Instructor, Web Developer, and Python Programmer. I
@@ -472,7 +473,71 @@
           </a>
         </div>
       </section>
-      <!-- Achievements and Certifications Section -->
+      <!-- Projects Grid — all projects always visible -->
+      <section class="py-4" style="background-color:var(--bg-primary)">
+        <div class="container projects-grid">
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📊 TracKKaroo <span style="color:var(--accent-gold);font-size:0.78rem;">Vue.js + Flask</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Vue.js</span><span class="tech-tag">Flask</span><span class="tech-tag">Redis</span><span class="tech-tag">Celery</span>
+                </div>
+                <p>Quantified self-tracking web app with dynamic visualisations, Redis caching, async tasks and automated email reports.</p>
+                <a href="https://github.com/shrikrishna97/TracKKaroo" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>🧪 TracKKaroo v1 <span style="color:var(--accent-gold);font-size:0.78rem;">Flask + Jinja2</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Flask</span><span class="tech-tag">Jinja2</span><span class="tech-tag">SQLite</span>
+                </div>
+                <p>First version of TracKKaroo — track personal habits and goals with a clean server-rendered UI.</p>
+                <a href="https://github.com/shrikrishna97/TracKKaroo_v1" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📚 Resources-App-Dev <span style="color:var(--accent-gold);font-size:0.78rem;">⭐ 79 Stars</span></h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Education</span><span class="tech-tag">IIT Madras</span>
+                </div>
+                <p>Comprehensive resource hub for IITM App Development students — 79+ stars, 30+ forks.</p>
+                <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>⚛️ React Todo App</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">React</span><span class="tech-tag">LocalStorage</span>
+                </div>
+                <p>Task management app with local storage, daily tracking, and clean add/complete/delete UI.</p>
+                <a href="https://github.com/shrikrishna97/React-Todo-App" target="_blank" class="project-link">GitHub →</a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>❓ Quiz App (Pro)</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">SQLite</span>
+                </div>
+                <p>Quiz application with multiple quiz sets, timed questions, and score tracking.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="project-card">
+                <h5>📈 MKP Store Analysis</h5>
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Excel</span>
+                </div>
+                <p>BDM capstone — sales, inventory &amp; customer analysis for a kirana store with a Streamlit dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="achievement" class="py-5">
         <div class="container">
           <h2 class="text-center section-heading">
@@ -850,6 +915,9 @@
         </div>
       </footer>
     </div>
+
+    <!-- Back-to-top button -->
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">&#8679;</button>
 
     <script src="script.js"></script>
     <script>

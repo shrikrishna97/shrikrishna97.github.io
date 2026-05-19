@@ -63,6 +63,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -510,4 +511,139 @@ section, .section-with-background {
 
 .row {
   --bs-gutter-x: 1.5rem;
+}
+
+/* ============================================================
+   TYPING TAGLINE (hero)
+   ============================================================ */
+.typing-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  min-height: 1.6em;
+  letter-spacing: 0.03em;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent-cyan);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================================
+   BACK-TO-TOP BUTTON
+   ============================================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--accent-cyan);
+  color: #0d1b2a;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.4);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top:hover {
+  background-color: var(--btn-hover);
+  color: #fff;
+}
+
+/* ============================================================
+   ACTIVE NAVBAR LINK
+   ============================================================ */
+.nav-link.nav-active {
+  color: var(--accent-cyan) !important;
+  border-bottom: 2px solid var(--accent-cyan);
+}
+
+/* ============================================================
+   PROJECTS GRID (below carousel)
+   ============================================================ */
+.projects-grid {
+  margin-top: 32px;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--text-primary);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.22);
+}
+
+.project-card h5 {
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.project-card .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 8px 0;
+}
+
+.project-card .tech-tag {
+  font-size: 0.72rem;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+.project-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.project-card .project-link {
+  font-size: 0.82rem;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border: 1px solid var(--accent-cyan);
+  padding: 3px 11px;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+.project-card .project-link:hover {
+  background: var(--accent-cyan);
+  color: #0d1b2a;
 }

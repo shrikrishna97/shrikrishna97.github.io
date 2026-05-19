@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize the Bootstrap Carousel if the element exists
+    // ── Bootstrap Carousel ────────────────────────────────────────
     var carouselEl = document.getElementById('projectCarousel');
     if (carouselEl) {
         new bootstrap.Carousel(carouselEl, {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize CodeMirror only if the target textarea exists
+    // ── CodeMirror (optional) ─────────────────────────────────────
     var textarea = document.getElementById('code');
     if (textarea && typeof CodeMirror !== 'undefined') {
         var editor = CodeMirror.fromTextArea(textarea, {
@@ -46,7 +46,83 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    window.addEventListener('scroll', updateDots, { passive: true });
-    updateDots();
+    // ── Active navbar link on scroll ─────────────────────────────
+    var navLinks = document.querySelectorAll('.navbar .nav-link[href^="#"]');
+
+    function updateNavLinks() {
+        var active = getActiveSection();
+        navLinks.forEach(function (link) {
+            var href = link.getAttribute('href').replace('#', '');
+            if (href === active) {
+                link.classList.add('nav-active');
+            } else {
+                link.classList.remove('nav-active');
+            }
+        });
+    }
+
+    // ── Back-to-top button ────────────────────────────────────────
+    var backToTop = document.getElementById('back-to-top');
+
+    function handleScroll() {
+        updateDots();
+        updateNavLinks();
+        if (backToTop) {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+    }
+
+    if (backToTop) {
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    // ── Typing tagline ────────────────────────────────────────────
+    var taglineEl = document.getElementById('typing-tagline');
+    if (taglineEl) {
+        var phrases = [
+            'IITM Alumnus 🎓',
+            'Course Instructor 👨‍🏫',
+            'Full-Stack Developer 💻',
+            'Python Programmer 🐍',
+            'Community Builder 🌐'
+        ];
+        var phraseIndex = 0;
+        var charIndex = 0;
+        var isDeleting = false;
+        var typingSpeed = 80;
+
+        function type() {
+            var current = phrases[phraseIndex];
+            var cursor = '<span class="typing-cursor"></span>';
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+            taglineEl.innerHTML = current.substring(0, charIndex) + cursor;
+
+            var delay = isDeleting ? typingSpeed / 2 : typingSpeed;
+
+            if (!isDeleting && charIndex === current.length) {
+                delay = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                delay = 400;
+            }
+            setTimeout(type, delay);
+        }
+        setTimeout(type, 600);
+    }
 });
 
