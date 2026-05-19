@@ -85,7 +85,7 @@ body {
 }
 
 /* Software/Tools section uses --bg-secondary */
-section.py-5:not([id]) {
+#skills-section {
   background-color: var(--bg-secondary);
 }
 
@@ -321,6 +321,22 @@ h2.text-center {
 }
 
 /* ============================================================
+   SECTION HEADINGS — use CSS variables so both modes work
+   ============================================================ */
+.section-heading {
+  color: var(--text-heading) !important;
+}
+
+/* ============================================================
+   SKILLS / SOFTWARE BADGES
+   ============================================================ */
+#software .btn-outline {
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  background-color: transparent;
+}
+
+/* ============================================================
    REPO LINK BADGES in Experience cards
    ============================================================ */
 .repo-links {
@@ -346,4 +362,152 @@ h2.text-center {
   background-color: var(--accent-cyan);
   color: #0d1b2a;
   text-decoration: none;
+}
+
+/* ============================================================
+   SECTION SCROLL INDICATOR (left side)
+   ============================================================ */
+#section-indicator {
+  position: fixed;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sec-dot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sec-dot-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
+  border: 2px solid var(--text-secondary);
+  transition: background-color 0.25s, transform 0.25s;
+  flex-shrink: 0;
+}
+
+.sec-dot-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: var(--bg-navbar);
+  padding: 2px 7px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.sec-dot:hover .sec-dot-label,
+.sec-dot.active .sec-dot-label {
+  opacity: 1;
+}
+
+.sec-dot.active .sec-dot-circle {
+  background-color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  transform: scale(1.35);
+}
+
+.sec-dot:hover .sec-dot-circle {
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+/* Hide indicator on very small screens */
+@media (max-width: 576px) {
+  #section-indicator {
+    display: none;
+  }
+}
+
+/* ============================================================
+   TEACHING CARDS — clickable
+   ============================================================ */
+.teaching-card {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.teaching-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.22);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   FOOTER IMPROVEMENTS
+   ============================================================ */
+footer.site-footer {
+  background-color: var(--bg-navbar) !important;
+  color: var(--text-primary);
+  padding: 40px 0 20px;
+  border-top: 2px solid var(--accent-cyan);
+}
+
+footer.site-footer h5 {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+footer.site-footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer.site-footer a:hover {
+  color: var(--accent-cyan);
+}
+
+footer.site-footer .footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+footer.site-footer .footer-tagline {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+footer.site-footer .footer-divider {
+  border-color: var(--border-color);
+  margin: 20px 0 16px;
+}
+
+footer.site-footer .footer-copy {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ============================================================
+   GENERAL ALIGNMENT / OVERFLOW FIX
+   ============================================================ */
+section, .section-with-background {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
 }
