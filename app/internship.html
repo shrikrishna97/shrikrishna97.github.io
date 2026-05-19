@@ -4,89 +4,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship Showcase</title>
-    <!-- Link to Bootstrap CSS -->
+    <title>Teaching &amp; Internship — Shri Krishna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Link to custom CSS -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Custom CSS for animations and styling */
-        /* Custom CSS for animations and styling */
-        body {
-            background-color: #f5f5f5;
-        }
+        body { background-color: #0d1b2a; color: #e0e0e0; }
 
-        header {
-            text-align: center;
-            padding: 40px;
-            background-color: #3498db;
-            color: #fff;
-            animation: fadeInUp 1s ease;
-        }
-
-        .project-section {
-            padding: 40px;
-        }
-
-        /* Apply the hover animation to the project image on card hover */
-        .project-card {
-            position: relative;
-        }
-
-        .project-image {
-            transform: scale(1);
-            /* Initial scale */
-            transition: transform 0.3s;
-            /* Add a transition for smooth animation */
-        }
-
-        /* Enlarge the image and change its z-index on hover */
-        .project-image:hover {
-            transform: scale(1.3);
-            /* Enlarge the image on hover */
-            z-index: 1;
-            /* Bring the image above other cards */
-        }
-
-        /* Keyframes animation */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
+
+        .page-header {
+            background: linear-gradient(135deg, #0a1628, #1e3a5f);
+            padding: 28px 24px 18px;
+            border-bottom: 2px solid #00b4d8;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            animation: fadeInUp 0.6s ease;
+        }
+        .page-header a.home-btn {
+            background: #00b4d8;
+            color: #0d1b2a;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .page-header a.home-btn:hover { background: #2563eb; color: #fff; }
+        .page-header h1 { margin: 0; color: #fff; font-size: 1.6rem; }
+
+        .work-card {
+            animation: fadeInUp 0.6s ease;
+            background: #1e3a5f;
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 18px rgba(0,180,216,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,180,216,0.25);
+        }
+        .work-card h4 { color: #00b4d8; margin-bottom: 4px; }
+        .work-card .org-period { color: #90a4ae; font-size: 0.88rem; margin-bottom: 10px; }
+        .work-card p { color: #c5cdd6; margin-bottom: 12px; }
+        .work-card ul { color: #c5cdd6; padding-left: 20px; }
+        .work-card ul li { margin-bottom: 4px; }
+
+        .repo-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .repo-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            background: rgba(0,180,216,0.12);
+            color: #00b4d8;
+            border: 1px solid #00b4d8;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .repo-badge:hover { background: #00b4d8; color: #0d1b2a; text-decoration: none; }
+
+        .section-heading {
+            color: #f4a261;
+            border-bottom: 2px solid rgba(244,162,97,0.3);
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+        }
+
+        footer { background: #0a1628; border-top: 1px solid rgba(0,180,216,0.2); }
+        footer a:hover { color: #00b4d8 !important; }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <!-- Header Section -->
-        <header>
-            <h1>Welcome to My Internship Showcase</h1>
-        </header>
-
-        <!-- Project Section -->
-        <section class="project-section">
-            <div class="container">
-                <div class="row">
-                    <!-- Vue.js component to display projects -->
-                    <project-list :projects="projects"></project-list>
-                </div>
-            </div>
-        </section>
+    <div class="page-header">
+        <a href="../index.html" class="home-btn">← Home</a>
+        <h1>👨‍🏫 Teaching &amp; Internship Work</h1>
     </div>
 
-    <!-- Link to Vue.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <!-- Vue.js component script -->
-    <script src="components/project-list.js"></script>
-    <!-- Link to Bootstrap JS (optional) -->
+    <div class="container py-5">
+
+        <!-- Teaching Section -->
+        <h3 class="section-heading">🎓 Teaching Roles — IIT Madras</h3>
+
+        <div class="work-card">
+            <h4>Course Instructor — Application Development I &amp; II</h4>
+            <div class="org-period">IIT Madras BS Programme &nbsp;|&nbsp; 2023 – Present</div>
+            <p>Delivered course content for Modern Application Development (MAD1 &amp; MAD2) — covering Flask, Vue.js, REST APIs, testing, and deployment.</p>
+            <ul>
+                <li>Conducted live Q&amp;A sessions and doubt-clearing workshops</li>
+                <li>Created step-by-step project report guides and viva checklists</li>
+                <li>Reviewed student project submissions and provided feedback</li>
+            </ul>
+            <div class="repo-links">
+                <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="repo-badge">📗 Resources-App-Dev (⭐ 79)</a>
+                <a href="https://github.com/shrikrishna97/App_dev_1_workshop" target="_blank" class="repo-badge">🛠️ App Dev Workshop</a>
+                <a href="https://github.com/shrikrishna97/Appdev" target="_blank" class="repo-badge">💻 Appdev Repo</a>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h4>Course Instructor — Computational Thinking</h4>
+            <div class="org-period">IIT Madras BS Programme &nbsp;|&nbsp; 2023 – Present</div>
+            <p>Taught problem-solving, algorithmic thinking, and programming fundamentals to Foundation level students in both English and Hindi.</p>
+            <ul>
+                <li>Created live session content and code demos</li>
+                <li>Recorded and shared session videos on YouTube</li>
+                <li>Built resources covering all weekly topics</li>
+            </ul>
+            <div class="repo-links">
+                <a href="https://github.com/shrikrishna97/Computational-Thinking" target="_blank" class="repo-badge">📘 Computational Thinking Repo</a>
+                <a href="https://www.youtube.com/@shri_krishna_pandey" target="_blank" class="repo-badge">▶️ YouTube Sessions</a>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h4>Course Instructor — Software Engineering</h4>
+            <div class="org-period">IIT Madras BS Programme &nbsp;|&nbsp; 2023 – Present</div>
+            <p>Covered software engineering principles, testing, agile methodologies, and project management for Degree level students.</p>
+            <ul>
+                <li>Guided students through software design and architecture concepts</li>
+                <li>Assisted with project evaluations and lab sessions</li>
+            </ul>
+        </div>
+
+        <div class="work-card">
+            <h4>On-Campus Offline Bootcamp — MAD1</h4>
+            <div class="org-period">IIT Madras Campus &nbsp;|&nbsp; 2024</div>
+            <p>Organised and conducted a hands-on bootcamp for IITM BS students on Application Development I, covering Flask project setup to deployment.</p>
+            <div class="repo-links">
+                <a href="https://github.com/shrikrishna97/Bootcamp_Mad1" target="_blank" class="repo-badge">🏕️ Bootcamp Repo</a>
+            </div>
+        </div>
+
+        <!-- Teaching Assistant Section -->
+        <h3 class="section-heading mt-5">👨‍🏫 Teaching Assistant</h3>
+
+        <div class="work-card">
+            <h4>Teaching Assistant — System Commands</h4>
+            <div class="org-period">IIT Madras BS Programme &nbsp;|&nbsp; 2022 – 2023</div>
+            <p>Mentored <strong>300+ students</strong> across multiple terms in the System Commands course, covering Linux utilities, Shell scripting, Awk, and Sed.</p>
+            <ul>
+                <li>Managed a WhatsApp community channel with <strong>1,000+ followers</strong></li>
+                <li>Admin of LinkedIn group with <strong>900+ members</strong></li>
+                <li>Resource website crossed <strong>80,000+ hits</strong></li>
+                <li>Active Telegram groups for real-time student support</li>
+            </ul>
+            <div class="repo-links">
+                <a href="https://github.com/shrikrishna97/System-Commands-Notes_May22" target="_blank" class="repo-badge">💻 System Commands Notes</a>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <h3 class="section-heading mt-5">🔬 Academic Projects</h3>
+
+        <div class="work-card">
+            <h4>MKP Store — Business Data Management Capstone</h4>
+            <div class="org-period">IIT Madras &nbsp;|&nbsp; 2022</div>
+            <p>Analysed sales, inventory, and customer data for a local kirana (grocery) store. Built a data input tool and a Streamlit dashboard with actionable insights.</p>
+            <ul>
+                <li>Tools: Python, Pandas, Excel, Streamlit</li>
+                <li>Delivered a recommendation system for inventory management</li>
+            </ul>
+        </div>
+
+        <div class="work-card">
+            <h4>Sales Prediction — ML Supervised Classification (Kaggle)</h4>
+            <div class="org-period">IIT Madras / Kaggle &nbsp;|&nbsp; 2022</div>
+            <p>Ranked <strong>42nd out of 760 teams</strong> in an ML competition. Achieved accuracy of 0.65 using ensemble methods.</p>
+            <ul>
+                <li>Tools: Numpy, Pandas, XGBoost, Scikit-learn</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-3">
+                    <h5>Contact</h5>
+                    <a href="mailto:shrikrishnapandey72@gmail.com" class="text-white" style="text-decoration:none;">
+                        <i class="far fa-envelope"></i> shrikrishnapandey72@gmail.com
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <h5>Connect</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://www.linkedin.com/in/shri-krishna-pandey/" class="text-white" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://github.com/shrikrishna97" class="text-white" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="https://www.youtube.com/@shri_krishna_pandey" class="text-white" target="_blank"><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(0,180,216,0.3);">
+            <p class="text-center mb-0">&copy; 2025 Shri Krishna🦚. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

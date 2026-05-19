@@ -27,132 +27,13 @@
     <script src="mode/javascript/javascript.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <style>
-      /* Define a CSS class for your section with a background image */
       .section-with-background {
-        /* Specify the background image URL */
         background-image: url("static/pxfuel.com.jpg");
-
-        /* Set background image properties */
-        background-repeat: no-repeat; /* Prevent the image from repeating */
-        background-size: cover; /* Scale the image to cover the entire section */
-        background-position: center; /* Center the image horizontally and vertically */
-        /* You can also set other background properties like background-color, etc. */
-        /* Example: background-color: rgba(0, 0, 0, 0.5); for a semi-transparent overlay */
-        /* Example: background-blur: 10px; for a blurred background */
-        /* Example: background-attachment: fixed; for a fixed background */
-
-        /* Define section height to ensure the background image is visible */
-        height: 600px; /* Adjust the height as needed */
-      }
-
-      /* Light mode styles */
-      body.light-mode {
-        background-color: #f0f0f0;
-        color: #000;
-      }
-
-      /* Dark mode styles */
-      body.dark-mode {
-        background-color: #000;
-        color: #0a0909;
-      }
-
-      /* Style for the image container */
-      .image-container {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 600px;
         position: relative;
-        overflow: hidden;
-      }
-
-      /* Style for the image */
-      .image-container img {
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s;
-        /* Add a smooth transition effect */
-      }
-
-      /* Style for the overlay */
-      .image-container .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Semi-transparent black background */
-        opacity: 0;
-        /* Initially hidden */
-        transition: opacity 0.3s;
-        /* Add a smooth transition effect */
-      }
-
-      /* Style for the overlay content (centered text) */
-      .image-container .overlay-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #fff;
-        text-align: center;
-      }
-
-      /* Hover effect: Show the overlay and scale the image */
-      .image-container:hover img {
-        transform: scale(1.1);
-      }
-
-      .image-container:hover .overlay {
-        opacity: 1;
-        /* Show the overlay */
-      }
-      /* Define styles for the heading (h2) */
-      .professional-heading {
-        font-family: Arial, sans-serif; /* Use a professional sans-serif font */
-        font-size: 24px; /* Adjust the font size as needed */
-        font-weight: bold; /* Make it bold for emphasis */
-        color: #eeeaea; /* Set the text color (dark gray) */
-      }
-
-      /* Define styles for the paragraph (p) */
-      .professional-paragraph {
-        font-family: Helvetica, Arial, sans-serif; /* Choose a readable font stack */
-        font-size: 18px; /* Adjust the font size as needed */
-        line-height: 1.5; /* Set the line height for better readability */
-        color: #a67a7a; /* Set the text color (light gray) */
-      }
-
-      /*  Custom keyframes animation
-         @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* Apply the animation to the card component 
-        .card {
-            animation: slideInFromLeft 1s ease;
-        } */
-      /* Custom keyframes animation for hover effect */
-      @keyframes hoverEffect {
-        0% {
-          transform: scale(1);
-        }
-
-        50% {
-          transform: scale(1.03);
-        }
-
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      /* Apply the hover animation to the card when hovered */
-      .card:hover {
-        animation: hoverEffect 0.3s ease-in-out;
       }
     </style>
     <title>Shri Krishna🦚</title>
@@ -235,7 +116,7 @@
                   Course Instructor, Web Developer, and Python Programmer. I
                   hold a
                   <strong>BS in Data Science &amp; Applications from IIT Madras</strong>
-                  (CGPA: 9.16) and a B.Sc. (Hons.) in Mathematics. I'm
+                  (CGPA: 8.79) and a B.Sc. (Hons.) in Mathematics. I'm
                   passionate about building web applications, teaching, and
                   helping students excel in their academic journey. I have
                   mentored <strong>300+ students</strong> in System Commands and
@@ -272,7 +153,7 @@
         </section>
       </div>
 
-      <section id="experience" class="py-5" style="background-color: #1a1a2e">
+      <section id="experience" class="py-5">
         <div class="container">
           <h2 class="text-center text-light mb-4">Experience</h2>
           <div class="row">
@@ -290,6 +171,12 @@
                     Lab Courses. Conducted on-campus offline bootcamps and
                     workshops for students.
                   </p>
+                  <div class="repo-links">
+                    <a href="https://github.com/shrikrishna97/Computational-Thinking" target="_blank" class="repo-badge">📘 Computational Thinking</a>
+                    <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="repo-badge">📗 App Dev Resources</a>
+                    <a href="https://github.com/shrikrishna97/App_dev_1_workshop" target="_blank" class="repo-badge">🛠️ App Dev Workshop</a>
+                    <a href="https://github.com/shrikrishna97/Bootcamp_Mad1" target="_blank" class="repo-badge">🏕️ Bootcamp MAD1</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -309,6 +196,10 @@
                     (<strong>900+ members</strong>), and a student resource
                     website with <strong>80,000+ hits</strong>.
                   </p>
+                  <div class="repo-links">
+                    <a href="https://github.com/shrikrishna97/System-Commands-Notes_May22" target="_blank" class="repo-badge">💻 System Commands Notes</a>
+                    <a href="https://github.com/shrikrishna97/Resources-App-Dev" target="_blank" class="repo-badge">⭐ Resources Repo (79 stars)</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -502,6 +393,66 @@
                 </p>
               </div>
             </div>
+            <!-- New: Pro Quiz App -->
+            <div class="carousel-item">
+              <div
+                class="d-block w-100"
+                style="
+                  min-height: 400px;
+                  background: linear-gradient(135deg, #0d1b2a, #1e3a5f);
+                  display: flex !important;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div class="text-center text-light p-5">
+                  <h1>❓</h1>
+                  <h3 class="text-warning">Quiz App (Pro)</h3>
+                  <p class="lead">Python · Flask · SQLite</p>
+                </div>
+              </div>
+              <div
+                class="carousel-caption text-white"
+                style="background: rgba(0,0,0,0.6); border-radius: 8px; padding: 12px;"
+              >
+                <h3>
+                  Quiz App
+                  <a href="https://github.com/shrikrishna97/Pro" target="_blank" class="text-warning">View on GitHub</a>
+                </h3>
+                <p>A quiz application built with <strong>Python Flask</strong>. Supports multiple quizzes, timed questions, and score tracking.</p>
+              </div>
+            </div>
+            <!-- New: Computational Thinking course repo -->
+            <div class="carousel-item">
+              <div
+                class="d-block w-100"
+                style="
+                  min-height: 400px;
+                  background: linear-gradient(135deg, #0f2237, #004d6e);
+                  display: flex !important;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div class="text-center text-light p-5">
+                  <h1>🧠</h1>
+                  <h3 class="text-warning">Computational Thinking</h3>
+                  <p class="lead">IITM Foundation Level — Live Session Content</p>
+                </div>
+              </div>
+              <div
+                class="carousel-caption text-white"
+                style="background: rgba(0,0,0,0.6); border-radius: 8px; padding: 12px;"
+              >
+                <h3>
+                  Computational Thinking Course
+                  <a href="https://github.com/shrikrishna97/Computational-Thinking" target="_blank" class="text-warning">View on GitHub</a>
+                </h3>
+                <p>
+                  Live session content for the <strong>Computational Thinking</strong> course of IITM Foundation level — English &amp; Hindi explanations, code demos, and student notes.
+                </p>
+              </div>
+            </div>
           </div>
           <a
             class="carousel-control-prev"
@@ -524,7 +475,7 @@
         </div>
       </section>
       <!-- Achievements and Certifications Section -->
-      <section id="achievement" class="py-5" style="background-color: gray">
+      <section id="achievement" class="py-5">
         <div class="container">
           <h2 class="text-center text-light">
             Achievements and Certifications
@@ -574,7 +525,7 @@
                       >BS in Data Science &amp; Applications from IIT
                       Madras</strong
                     >
-                    with a CGPA of <strong>9.16</strong>. Received Diploma
+                    with a CGPA of <strong>8.79</strong>. Received Diploma
                     Certificate at SAC Auditorium, IIT Madras.
                   </p>
                 </div>
@@ -729,7 +680,7 @@
         </div>
       </section>
 
-      <section id="resume" class="py-5" style="background-color: gray">
+      <section id="resume" class="py-5">
         <div class="container text-light">
           <h2 class="text-center text-dark">Resume</h2>
           <div class="row">
@@ -776,7 +727,7 @@
         </div>
       </section>
 
-      <section id="youtube" class="py-5" style="background-color: #1a1a2e">
+      <section id="youtube" class="py-5">
         <div class="container">
           <h2 class="text-center text-light mb-4">📺 Teaching &amp; Content</h2>
           <p class="text-center text-muted mb-4">
@@ -894,24 +845,15 @@
 
     <script src="script.js"></script>
     <script>
-      checkRobot();
-    </script>
-    <script>
       function openNewPage(newPageUrl) {
-        // Redirect the browser to the new page
         window.location.href = newPageUrl;
       }
-      // Function to toggle between light mode and dark mode
-      function toggleMode() {
-        const body = document.body;
-        body.classList.toggle("dark-mode");
-        body.classList.toggle("light-mode");
-      }
 
-      const modeToggleCheckbox = document.getElementById(
-        "flexSwitchCheckDefault"
-      );
-      modeToggleCheckbox.addEventListener("change", toggleMode);
+      // Toggle light/dark mode via CSS variables (dark is the default)
+      const modeToggleCheckbox = document.getElementById('flexSwitchCheckDefault');
+      modeToggleCheckbox.addEventListener('change', function () {
+        document.body.classList.toggle('light-mode', this.checked);
+      });
     </script>
   </body>
 </html>
