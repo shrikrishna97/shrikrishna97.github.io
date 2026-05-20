@@ -2,7 +2,7 @@
 
 > Live site: **[shrikrishna97.github.io](https://shrikrishna97.github.io/)**
 
-A personal portfolio and resource hub built from scratch — no templates used.
+A personal portfolio and resource hub built from scratch and with co-pilots help — no external templates used.
 
 ---
 
