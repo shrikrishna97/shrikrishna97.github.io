@@ -55,12 +55,12 @@ var MusicRecommender = (function () {
         },
         fall: {
             day: [
-                { id: 'y6Sxv-sUYtM', title: 'Happy',                        artist: 'Pharrell Williams'            },
+                { id: 'OPf0YbXqDm0', title: 'Uptown Funk',                  artist: 'Bruno Mars'                   },
                 { id: 'nfWlot6h_JM', title: 'Shake It Off',                 artist: 'Taylor Swift'                 },
-                { id: 'CevxZvSJLk8', title: 'Roar',                         artist: 'Katy Perry'                   }
+                { id: 'ru0K8uYEZWw', title: "Can't Stop the Feeling!",      artist: 'Justin Timberlake'            }
             ],
             night: [
-                { id: '2Vv-BfVoq4g', title: 'Perfect',                      artist: 'Ed Sheeran'                   },
+                { id: 'lFfKIBHkZD0', title: 'Something Just Like This',     artist: 'Coldplay & The Chainsmokers'  },
                 { id: 'rtOvBOTyX00', title: 'A Thousand Years',             artist: 'Christina Perri'              },
                 { id: 'RgKAFK5djSk', title: 'See You Again',                artist: 'Wiz Khalifa ft. Charlie Puth' }
             ]
@@ -97,8 +97,8 @@ var MusicRecommender = (function () {
         var timeOfDay  = getTimeOfDay(now.getHours());
         var songs      = PLAYLIST[season][timeOfDay];
 
-        // Deterministic daily rotation: day-of-year mod playlist length
-        var yearStart  = new Date(now.getFullYear(), 0, 0);
+        // Use day-of-year (0-indexed from Jan 1) to rotate songs deterministically
+        var yearStart  = new Date(now.getFullYear(), 0, 1);
         var dayOfYear  = Math.floor((now - yearStart) / 86400000);
         var song       = songs[dayOfYear % songs.length];
 
