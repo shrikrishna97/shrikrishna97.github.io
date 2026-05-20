@@ -446,8 +446,10 @@
                     }
                 }
 
-                /* Expose global YT API ready callback */
+                /* Expose global YT API ready callback — chain any pre-existing one */
+                var prevYTCallback = window.onYouTubeIframeAPIReady;
                 window.onYouTubeIframeAPIReady = function () {
+                    if (typeof prevYTCallback === 'function') { prevYTCallback(); }
                     self.ytApiReady = true;
                     if (self.musicWanted && !self.musicPaused) {
                         self.startPlayer();
