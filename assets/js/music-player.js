@@ -202,8 +202,9 @@
                         : 'Would you like to listen to some background music while browsing?';
                 },
                 endModalText: function () {
-                    return this.currentSong
-                        ? '"' + this.currentSong.title + '" by ' + this.currentSong.artist + ' has finished. What would you like to do next?'
+                    var song = this.playingSong || this.currentSong;
+                    return song
+                        ? '"' + song.title + '" by ' + song.artist + ' has finished. What would you like to do next?'
                         : 'What would you like to do next?';
                 }
             },
@@ -311,10 +312,31 @@
                             try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
 
                         } else if (!currentId) {
-                            /* Empty video_id → YouTube ad; mute immediately */
+                            /* Empty video_id — often a YouTube pre-roll ad, but can also be
+                               a transient blank while the IFrame API loads the video metadata.
+                               Mute immediately as a precaution, then re-check after 800 ms.
+                               If the real song's ID appears by then, restore normal playback. */
                             this.isAdPlaying = true;
                             this.isPlaying   = false;
                             e.target.mute();
+                            var playerEl         = e.target;
+                            var expectedAtCheck  = this.expectedVideoId;
+                            setTimeout(function () {
+                                if (!self.ytPlayer) return;
+                                var d3  = playerEl.getVideoData ? playerEl.getVideoData() : {};
+                                var id3 = d3.video_id || '';
+                                /* Only correct state if the expected song is now confirmed */
+                                if (id3 && id3 === expectedAtCheck && id3 === self.expectedVideoId) {
+                                    self.isAdPlaying = false;
+                                    self.isPlaying   = true;
+                                    self.playingSong = self.currentSong;
+                                    self.musicPaused = false;
+                                    playerEl.unMute();
+                                    playerEl.setVolume(40);
+                                    try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
+                                }
+                                /* else: genuinely an ad — leave muted until it ends */
+                            }, 800);
 
                         } else {
                             /* Non-empty but unexpected video_id.
@@ -451,6 +473,7 @@
 
                     this.currentSong     = next;
                     this.expectedVideoId = next.id;
+                    this.playingSong     = null;   // clear stale display until new song is confirmed
 
                     try {
                         sessionStorage.setItem('musicVideoId', next.id);
