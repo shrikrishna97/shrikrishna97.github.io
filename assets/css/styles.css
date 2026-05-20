@@ -1203,3 +1203,14 @@ section, .section-with-background {
     animation: none !important;
   }
 }
+
+/* ── Hero section background image ──────────────────────────────────────── */
+.section-with-background {
+  background-image: url("../../static/pxfuel.com.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 420px;
+  height: auto;
+  position: relative;
+}
