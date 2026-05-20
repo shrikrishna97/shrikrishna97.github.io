@@ -281,7 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 sessionStorage.setItem('musicChoice', 'yes');
                 musicModal.classList.add('hidden');
                 _musicWanted = true;
-                _setMusicPlaying(true);
+                // Just show the toggle button — onReady will call _setMusicPlaying(true)
+                // once the YouTube player is actually playing.
+                if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
                 if (_ytApiReady && _recommendation) {
                     _createYouTubePlayer(_recommendation.song.id);
                 }
