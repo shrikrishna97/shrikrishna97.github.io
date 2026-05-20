@@ -396,11 +396,13 @@ h2.text-center {
 }
 
 .sec-dot {
+  position: relative;   /* contain the abs-positioned label */
   display: flex;
   align-items: center;
-  gap: 8px;
   cursor: pointer;
   text-decoration: none;
+  padding: 6px 4px;     /* vertical breathing room; small horizontal touch target */
+  /* gap removed — label is now absolutely positioned, not in flex flow */
 }
 
 .sec-dot-circle {
@@ -414,6 +416,10 @@ h2.text-center {
 }
 
 .sec-dot-label {
+  position: absolute;        /* out of flex flow — dot hit-area stays dot-sized */
+  left: calc(100% + 8px);   /* appears to the right of the circle */
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 0.72rem;
   color: var(--text-secondary);
   background: var(--bg-navbar);

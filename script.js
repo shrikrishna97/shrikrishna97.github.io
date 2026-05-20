@@ -33,7 +33,7 @@ function _setMusicPlaying(playing) {
 }
 
 function _createYouTubePlayer(videoId) {
-    if (!window.YT || !YT.Player) return;
+    if (!window.YT || !YT.Player || _ytPlayer) return;   // guard: never create twice
     _ytPlayer = new YT.Player('yt-player', {
         height: '1',
         width: '1',
@@ -264,8 +264,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 musicModal.classList.remove('hidden');
             }, MODAL_DELAY_MS);
         } else if (sessionStorage.getItem('musicChoice') === 'yes') {
+            // Don't mark UI as "playing" yet — let YouTube onReady do that once the
+            // player actually starts.  Just make the toggle button visible.
             _musicWanted = true;
-            _setMusicPlaying(true);
+            if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
             if (_ytApiReady && _recommendation) {
                 _createYouTubePlayer(_recommendation.song.id);
             }
