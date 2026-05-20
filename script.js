@@ -163,5 +163,80 @@ document.addEventListener('DOMContentLoaded', function () {
             revealObserver.observe(el);
         });
     }
+
+    // ── Background music with consent modal ──────────────────────
+    var bgMusic      = document.getElementById('bg-music');
+    var musicModal   = document.getElementById('music-modal');
+    var musicYesBtn  = document.getElementById('music-yes-btn');
+    var musicNoBtn   = document.getElementById('music-no-btn');
+    var musicToggle  = document.getElementById('music-toggle');
+    var musicIcon    = document.getElementById('music-toggle-icon');
+
+    function setMusicPlaying(playing) {
+        if (!musicToggle) return;
+        musicToggle.removeAttribute('hidden');
+        if (playing) {
+            musicIcon.textContent = '⏸';
+            musicToggle.classList.add('playing');
+            musicToggle.setAttribute('aria-label', 'Pause music');
+            musicToggle.setAttribute('title', 'Pause music');
+        } else {
+            musicIcon.textContent = '♪';
+            musicToggle.classList.remove('playing');
+            musicToggle.setAttribute('aria-label', 'Play music');
+            musicToggle.setAttribute('title', 'Play music');
+        }
+    }
+
+    if (bgMusic && musicModal) {
+        var answered = sessionStorage.getItem('musicPromptAnswered');
+        if (!answered) {
+            // Show the modal after a short delay so the page finishes loading first
+            setTimeout(function () {
+                musicModal.classList.remove('hidden');
+            }, 900);
+        } else {
+            // Restore previous choice for this session
+            if (sessionStorage.getItem('musicChoice') === 'yes') {
+                bgMusic.play().catch(function () {});
+                setMusicPlaying(true);
+            } else {
+                setMusicPlaying(false);
+            }
+        }
+
+        if (musicYesBtn) {
+            musicYesBtn.addEventListener('click', function () {
+                sessionStorage.setItem('musicPromptAnswered', '1');
+                sessionStorage.setItem('musicChoice', 'yes');
+                musicModal.classList.add('hidden');
+                bgMusic.play().catch(function () {});
+                setMusicPlaying(true);
+            });
+        }
+
+        if (musicNoBtn) {
+            musicNoBtn.addEventListener('click', function () {
+                sessionStorage.setItem('musicPromptAnswered', '1');
+                sessionStorage.setItem('musicChoice', 'no');
+                musicModal.classList.add('hidden');
+                setMusicPlaying(false);
+            });
+        }
+
+        if (musicToggle) {
+            musicToggle.addEventListener('click', function () {
+                if (bgMusic.paused) {
+                    bgMusic.play().catch(function () {});
+                    sessionStorage.setItem('musicChoice', 'yes');
+                    setMusicPlaying(true);
+                } else {
+                    bgMusic.pause();
+                    sessionStorage.setItem('musicChoice', 'no');
+                    setMusicPlaying(false);
+                }
+            });
+        }
+    }
 });
 

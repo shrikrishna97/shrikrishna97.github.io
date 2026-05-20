@@ -1096,6 +1096,29 @@
     <!-- Back-to-top button -->
     <button id="back-to-top" aria-label="Back to top" title="Back to top">&#8679;</button>
 
+    <!-- Floating music toggle (shown after modal is answered) -->
+    <button id="music-toggle" aria-label="Play music" title="Play music" hidden>
+      <span id="music-toggle-icon">♪</span>
+    </button>
+
+    <!-- Background music — replace static/music.mp3 with your own track -->
+    <audio id="bg-music" loop preload="none">
+      <source src="static/music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Music consent modal -->
+    <div id="music-modal" class="music-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="music-modal-title">
+      <div class="music-modal-card">
+        <div class="music-modal-icon">🎵</div>
+        <h3 id="music-modal-title" class="music-modal-title">Welcome!</h3>
+        <p class="music-modal-text">Would you like to listen to some background music while browsing?</p>
+        <div class="music-modal-actions">
+          <button id="music-yes-btn" class="btn-music-yes">♪ Yes, please!</button>
+          <button id="music-no-btn" class="btn-music-no">No, thanks</button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
