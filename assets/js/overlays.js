@@ -120,8 +120,8 @@
         {
             title: 'Course Instructor — Application Development I & II',
             org: 'IIT Madras BS Programme',
-            period: '2023 – Present',
-            desc: 'Delivered course content for Modern Application Development (MAD1 & MAD2) — covering Flask, Vue.js, REST APIs, testing, and deployment.',
+            period: '2024 – Present',
+            desc: 'Delivered course content for Modern Application Development (MAD1 & MAD2) — covering Flask, Vue.js, REST APIs, testing and others.',
             bullets: [
                 'Conducted live Q&A sessions and doubt-clearing workshops',
                 'Created step-by-step project report guides and viva checklists',
@@ -129,14 +129,14 @@
             ],
             repos: [
                 { label: '📗 Resources-App-Dev (⭐ 79)', url: 'https://github.com/shrikrishna97/Resources-App-Dev' },
-                { label: '🛠️ App Dev Workshop', url: 'https://github.com/shrikrishna97/App_dev_1_workshop' },
-                { label: '💻 Appdev Repo', url: 'https://github.com/shrikrishna97/Appdev' }
+                { label: '🛠️ App Dev-2 Project Repo', url: 'https://github.com/shrikrishna97/Resources-App-Dev/tree/main/App-Dev-2-Project/Jan-26' },
+                { label: '💻 Youtube Resources', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7pbVDSZRhyPr8B3r6WUQieP' }
             ]
         },
         {
             title: 'Course Instructor — Computational Thinking',
             org: 'IIT Madras BS Programme',
-            period: '2023 – Present',
+            period: 'Sep'2025',
             desc: 'Taught problem-solving, algorithmic thinking, and programming fundamentals to Foundation level students in both English and Hindi.',
             bullets: [
                 'Created live session content and code demos',
@@ -145,13 +145,14 @@
             ],
             repos: [
                 { label: '📘 Computational Thinking Repo', url: 'https://github.com/shrikrishna97/Computational-Thinking' },
-                { label: '▶️ YouTube Sessions', url: 'https://www.youtube.com/@shri_krishna_pandey' }
+                { label: '▶️ Live Sessions', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7om75sN8aC_axtnhDFABKR7' }
+                { label: '▶️ CT Hindi Lectures', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7pONIil88Bybu7uCiVbzNGm' }
             ]
         },
         {
             title: 'Course Instructor — Software Engineering',
             org: 'IIT Madras BS Programme',
-            period: '2023 – Present',
+            period: 'Sep'2025',
             desc: 'Covered software engineering principles, testing, agile methodologies, and project management for Degree level students.',
             bullets: [
                 'Guided students through software design and architecture concepts',
@@ -160,13 +161,13 @@
             repos: []
         },
         {
-            title: 'On-Campus Offline Bootcamp — MAD1',
+            title: 'Online and On-Campus Offline Bootcamp — MAD1 and MAD-2',
             org: 'IIT Madras Campus',
-            period: '2024',
+            period: '2023 - Present',
             desc: 'Organised and conducted a hands-on bootcamp for IITM BS students on Application Development I, covering Flask project setup to deployment.',
             bullets: [],
             repos: [
-                { label: '🏕️ Bootcamp Repo', url: 'https://github.com/shrikrishna97/Bootcamp_Mad1' }
+                { label: '🏕️ Online Bootcamp MAD-1 video', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7o_-HNP5XZPwWFvUUQxGg4K' }
             ]
         },
         {
@@ -174,14 +175,14 @@
             isSection: true
         },
         {
-            title: 'Teaching Assistant — System Commands',
+            title: 'Teaching Assistant — System Commands and App Dev 2',
             org: 'IIT Madras BS Programme',
             period: '2022 – 2023',
             desc: 'Mentored 300+ students across multiple terms in the System Commands course, covering Linux utilities, Shell scripting, Awk, and Sed.',
             bullets: [
-                'Managed a WhatsApp community channel with 1,000+ followers',
-                'Admin of LinkedIn group with 900+ members',
-                'Resource website crossed 80,000+ hits',
+                'Managed a WhatsApp community channel with 2,500+ followers',
+                'Admin of LinkedIn group with 1500+ members',
+                'Resource website crossed over lakh+ hits',
                 'Active Telegram groups for real-time student support'
             ],
             repos: [
@@ -195,7 +196,7 @@
         {
             title: 'MKP Store — Business Data Management Capstone',
             org: 'IIT Madras',
-            period: '2022',
+            period: '2023',
             desc: 'Analysed sales, inventory, and customer data for a local kirana (grocery) store. Built a data input tool and a Streamlit dashboard with actionable insights.',
             bullets: [
                 'Tools: Python, Pandas, Excel, Streamlit',
@@ -206,7 +207,7 @@
         {
             title: 'Sales Prediction — ML Supervised Classification (Kaggle)',
             org: 'IIT Madras / Kaggle',
-            period: '2022',
+            period: '2023',
             desc: 'Ranked 42nd out of 760 teams in an ML competition. Achieved accuracy of 0.65 using ensemble methods.',
             bullets: [
                 'Tools: Numpy, Pandas, XGBoost, Scikit-learn'
