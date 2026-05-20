@@ -190,15 +190,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (bgMusic && musicModal) {
         var answered = sessionStorage.getItem('musicPromptAnswered');
+        // Delay lets the page finish rendering before the modal appears
+        var MODAL_DELAY_MS = 900;
         if (!answered) {
-            // Show the modal after a short delay so the page finishes loading first
             setTimeout(function () {
                 musicModal.classList.remove('hidden');
-            }, 900);
+            }, MODAL_DELAY_MS);
         } else {
             // Restore previous choice for this session
             if (sessionStorage.getItem('musicChoice') === 'yes') {
-                bgMusic.play().catch(function () {});
+                bgMusic.play().catch(function () { setMusicPlaying(false); });
                 setMusicPlaying(true);
             } else {
                 setMusicPlaying(false);
@@ -210,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 sessionStorage.setItem('musicPromptAnswered', '1');
                 sessionStorage.setItem('musicChoice', 'yes');
                 musicModal.classList.add('hidden');
-                bgMusic.play().catch(function () {});
+                bgMusic.play().catch(function () { setMusicPlaying(false); });
                 setMusicPlaying(true);
             });
         }
@@ -227,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (musicToggle) {
             musicToggle.addEventListener('click', function () {
                 if (bgMusic.paused) {
-                    bgMusic.play().catch(function () {});
+                    bgMusic.play().catch(function () { setMusicPlaying(false); });
                     sessionStorage.setItem('musicChoice', 'yes');
                     setMusicPlaying(true);
                 } else {
