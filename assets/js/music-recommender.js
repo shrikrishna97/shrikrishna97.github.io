@@ -82,6 +82,22 @@ var MusicRecommender = (function () {
         return (hour >= 6 && hour < 20) ? 'day' : 'night';
     }
 
+    /**
+     * Returns a song from the current season/time pool that is different from
+     * the one identified by currentId.  Falls back to any song if the pool has
+     * only one track.
+     */
+    function recommendNext(currentId) {
+        var now       = new Date();
+        var season    = getSeason(now.getMonth());
+        var timeOfDay = getTimeOfDay(now.getHours());
+        var songs     = PLAYLIST[season][timeOfDay];
+        var others    = songs.filter(function (s) { return s.id !== currentId; });
+        var pool      = others.length ? others : songs;
+        var idx       = Math.floor(Math.random() * pool.length);
+        return pool[idx];
+    }
+
     // ── Public API ───────────────────────────────────────────────────────────
 
     /**
@@ -113,5 +129,5 @@ var MusicRecommender = (function () {
         };
     }
 
-    return { recommend: recommend };
+    return { recommend: recommend, recommendNext: recommendNext };
 })();
