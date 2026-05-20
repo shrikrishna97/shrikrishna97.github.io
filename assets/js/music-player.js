@@ -282,8 +282,8 @@
                 },
 
                 /* Ad detection: compare current playing ID with expected ID.
-                   During ad playback the IFrame API typically reports either an
-                   empty string or a different video_id for the playing content. */
+                   During ad playback the IFrame API reports either an empty string
+                   or a different video_id.  Both cases are treated as ads. */
                 handleStateChange: function (e) {
                     var self = this;
 
@@ -291,11 +291,11 @@
                         var data      = e.target.getVideoData ? e.target.getVideoData() : {};
                         var currentId = data.video_id || '';
 
-                        if (currentId && currentId !== this.expectedVideoId) {
-                            /* A different video is playing → ad/trailer */
+                        if (currentId !== this.expectedVideoId) {
+                            /* A different (or empty) video_id → ad/trailer; mute it */
                             this.isAdPlaying = true;
                             this.isPlaying   = false;
-                            e.target.mute();          /* silence the ad */
+                            e.target.mute();
                         } else {
                             /* The requested song is playing */
                             this.isAdPlaying = false;
@@ -312,11 +312,10 @@
                         }
 
                     } else if (e.data === YT.PlayerState.ENDED) {
-                        /* Check whether the ad ended (the song is about to start)
-                           or the actual song ended */
-                        var data2      = e.target.getVideoData ? e.target.getVideoData() : {};
-                        var endedId    = data2.video_id || '';
-                        if (endedId && endedId !== this.expectedVideoId) {
+                        /* Check whether the ad ended or the actual song ended */
+                        var data2   = e.target.getVideoData ? e.target.getVideoData() : {};
+                        var endedId = data2.video_id || '';
+                        if (endedId !== this.expectedVideoId) {
                             /* Ad ended – the real song will start automatically */
                             this.isAdPlaying = false;
                             return;
