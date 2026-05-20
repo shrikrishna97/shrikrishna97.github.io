@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ── Reading progress bar ──────────────────────────────────────
+    var progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', function () {
+            var scrollTop  = window.scrollY;
+            var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+            var pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = pct + '%';
+        }, { passive: true });
+    }
+
     // ── Persist dark/light mode preference ───────────────────────
     var modeToggleCheckbox = document.getElementById('flexSwitchCheckDefault');
     if (modeToggleCheckbox) {

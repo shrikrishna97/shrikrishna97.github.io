@@ -46,14 +46,15 @@
         'border-radius:8px;padding:.52rem 1.3rem;font-size:.92rem;cursor:pointer;',
         'transition:border-color .2s,color .2s;}',
         '.mp-btn-no:hover{border-color:#00b4d8;color:#00b4d8;}',
-        /* now-playing badge */
-        '.mp-badge{position:fixed;bottom:140px;right:8px;z-index:1000;max-width:240px;',
+        /* now-playing badge — responsive position */
+        '.mp-badge{position:fixed;bottom:clamp(130px,17vw,140px);right:clamp(4px,3vw,8px);',
+        'z-index:1000;max-width:min(240px,calc(100vw - 16px));',
         'background:#1a2f4a;border:1px solid rgba(0,180,216,.28);border-radius:20px;',
         'padding:5px 12px;font-size:.72rem;color:#00b4d8;white-space:nowrap;overflow:hidden;',
         'text-overflow:ellipsis;box-shadow:0 2px 10px rgba(0,0,0,.3);pointer-events:none;',
         'animation:mpSlideUp .3s ease;}',
-        /* floating toggle */
-        '#mp-toggle{position:fixed;bottom:90px;right:24px;z-index:1000;width:44px;height:44px;',
+        /* floating toggle — responsive position */
+        '#mp-toggle{position:fixed;bottom:clamp(76px,10vw,90px);right:clamp(12px,4vw,24px);z-index:1000;width:44px;height:44px;',
         'border-radius:50%;background:#1a2f4a;border:1px solid rgba(0,180,216,.28);color:#00b4d8;',
         'font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;',
         'box-shadow:0 4px 14px rgba(0,0,0,.3);transition:background .2s,transform .2s;}',
@@ -93,8 +94,8 @@
         injectStyles();
         createPlayerContainer();
 
-        if (typeof Vue === 'undefined') {
-            console.warn('[MusicPlayer] Vue.js not found – player disabled.');
+        if (typeof Vue === 'undefined' || typeof Vue.createApp !== 'function') {
+            console.warn('[MusicPlayer] Vue 3 not found – player disabled.');
             return;
         }
 
@@ -105,8 +106,7 @@
             document.body.appendChild(el);
         }
 
-        new Vue({
-            el: '#music-app',
+        Vue.createApp({
 
             /* ── Template ──────────────────────────────────────────── */
             template: [
@@ -120,7 +120,7 @@
                 '</button>',
 
                 /* Now-playing / ad badge */
-                '<div v-if="showToggle && badgeText" class="mp-badge">{{ badgeText }}</div>',
+                '<div v-if="showToggle && badgeText" class="mp-badge" aria-live="polite" aria-atomic="true">{{ badgeText }}</div>',
 
                 /* ── Consent modal ─────────────────────────────────── */
                 '<div v-if="showConsentModal" class="mp-overlay" role="dialog" aria-modal="true">',
@@ -472,7 +472,7 @@
                 /* Save playback position before the browser navigates away */
                 window.addEventListener('pagehide', function () { self.savePosition(); });
             }
-        });
+        }).mount('#music-app');
     }
 
     /* Boot after DOM is ready */
