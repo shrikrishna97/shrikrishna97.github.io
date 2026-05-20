@@ -4,32 +4,32 @@ new Vue({
         educationalJourney: [
             {
                 title: 'B.Sc. (Hons.) in Mathematics',
-                institution: 'Dr. Harisingh Gour Vishwavidyalaya (Central University), Sagar, MP',
-                year: '2017 – 2020',
+                institution: 'Govt. T.R.S College, Rewa, MP',
+                year: '2015 – 2018',
                 description: 'Three-year honours degree in Mathematics. Built a strong foundation in calculus, linear algebra, statistics, and real analysis.'
             },
             {
                 title: 'Foundational Level Certificate',
                 institution: 'IIT Madras — BS in Data Science & Applications',
-                year: '2021',
+                year: '2020 - 2021',
                 description: 'Completed the Foundational Level of the IIT Madras BS programme, covering Statistics, Maths, Computational Thinking, and English.'
             },
             {
                 title: 'Diploma in Programming',
                 institution: 'IIT Madras — BS in Data Science & Applications',
-                year: '2022',
+                year: '2021 - 2022',
                 description: 'Earned the Programming Diploma, covering System Commands, Database Management, Java, and Application Development.'
             },
             {
                 title: 'Diploma in Data Science',
                 institution: 'IIT Madras — BS in Data Science & Applications',
-                year: '2023',
+                year: '2022 - 2023',
                 description: 'Earned the Data Science Diploma, covering Machine Learning Foundations, Business Data Management, Tools in Data Science, and MLT.'
             },
             {
                 title: 'BS in Data Science & Applications',
                 institution: 'IIT Madras',
-                year: '2024',
+                year: '2023 - 2024',
                 description: 'Completed the full BS Degree with an overall CGPA of 8.79. Received the Diploma Certificate at SAC Auditorium, IIT Madras. Final courses included Software Engineering, Application Development II, and Capstone project.'
             }
         ],
@@ -37,20 +37,24 @@ new Vue({
             {
                 title: 'Course Instructor — IIT Madras',
                 org: 'IIT Madras BS Program',
-                period: '2023 – Present',
+                period: '2024 – Present',
                 description: 'Teaching Computational Thinking, Application Development I & II, Software Engineering, and their Lab Courses. Conducted on-campus offline bootcamps and workshops.',
                 repoLinks: [
                     { label: '📘 Computational Thinking', url: 'https://github.com/shrikrishna97/Computational-Thinking' },
                     { label: '📗 App Dev Resources', url: 'https://github.com/shrikrishna97/Resources-App-Dev' },
-                    { label: '🛠️ App Dev Workshop', url: 'https://github.com/shrikrishna97/App_dev_1_workshop' },
-                    { label: '🏕️ Bootcamp MAD1', url: 'https://github.com/shrikrishna97/Bootcamp_Mad1' }
                 ]
+            },
+            {
+                title: 'Teaching Assistant',
+                org: 'IIT Madras',
+                period: '2023 - 2024',
+                description: 'Taken live sessions, handled thousands of level1 vivas, taken hundreds of level1/level2 vivas for App Dev courses.',
             },
             {
                 title: 'Teaching Assistant & Education Mentor',
                 org: 'IIT Madras',
-                period: '2022 – 2023',
-                description: 'Mentored 300+ students in System Commands. Managed a WhatsApp community (1,000+ followers), LinkedIn group (900+ members), and a resource website with 80,000+ hits.',
+                period: '2022',
+                description: 'Mentored 300+ students in System Commands. Managed a WhatsApp community (10,000+), LinkedIn group (900+ members)',
                 repoLinks: [
                     { label: '💻 System Commands Notes', url: 'https://github.com/shrikrishna97/System-Commands-Notes_May22' }
                 ]
