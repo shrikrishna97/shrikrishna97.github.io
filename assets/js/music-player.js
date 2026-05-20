@@ -1,15 +1,15 @@
 /**
- * music-player.js  (Vue 2)
+ * music-player.js  (Vue 3)
  *
  * Self-contained music-player widget for every page on the site.
  * Relies on:
- *   • Vue 2 CDN (vue@2.6.14 or later 2.x)
+ *   • Vue 3 CDN (vue@3/dist/vue.global.prod.js)
  *   • music-recommender.js (must be loaded first)
  *   • YouTube IFrame API  (loaded via <script src="https://www.youtube.com/iframe_api">)
  *
  * Drop-in usage – add before </body> on any page:
  *   <script src="https://www.youtube.com/iframe_api"></script>
- *   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+ *   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
  *   <script src="...assets/js/music-recommender.js"></script>
  *   <script src="...assets/js/music-player.js"></script>
  *
