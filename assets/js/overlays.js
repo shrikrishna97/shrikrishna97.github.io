@@ -67,7 +67,7 @@
         {
             title: 'Teaching Assistant & Education Mentor',
             org: 'IIT Madras',
-            period: '2022',
+            period: '2022 - 2024',
             description: 'Mentored 300+ students in System Commands. Managed a WhatsApp community (10,000+), LinkedIn group (900+ members).',
             repos: [
                 { label: '💻 System Commands Notes', url: 'https://github.com/shrikrishna97/System-Commands-Notes_May22' }
@@ -76,14 +76,14 @@
         {
             title: 'ML Supervised Classification Project',
             org: 'IIT Madras — Kaggle Competition',
-            period: '2022',
+            period: '2023',
             description: 'Achieved accuracy of 0.65 in a Sales Prediction project, ranking 42nd out of 760 teams. Used Numpy, Pandas, XGBoost, Sklearn.',
             repos: []
         },
         {
             title: 'Business Data Management Capstone',
             org: 'IIT Madras',
-            period: '2022',
+            period: '2023',
             description: 'Data collection, cleaning, preparation, and dashboard creation for a kirana firm. Developed a recommendation system and Streamlit app (MKP Store Analysis).',
             repos: []
         }
@@ -177,7 +177,7 @@
         {
             title: 'Teaching Assistant — System Commands and App Dev 2',
             org: 'IIT Madras BS Programme',
-            period: '2022 – 2023',
+            period: '2022 – 2024',
             desc: 'Mentored 300+ students across multiple terms in the System Commands course, covering Linux utilities, Shell scripting, Awk, and Sed.',
             bullets: [
                 'Managed a WhatsApp community channel with 2,500+ followers',
