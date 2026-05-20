@@ -136,7 +136,7 @@
         {
             title: 'Course Instructor — Computational Thinking',
             org: 'IIT Madras BS Programme',
-            period: 'Sep'2025',
+            period: 'Sep 2025',
             desc: 'Taught problem-solving, algorithmic thinking, and programming fundamentals to Foundation level students in both English and Hindi.',
             bullets: [
                 'Created live session content and code demos',
@@ -145,14 +145,14 @@
             ],
             repos: [
                 { label: '📘 Computational Thinking Repo', url: 'https://github.com/shrikrishna97/Computational-Thinking' },
-                { label: '▶️ Live Sessions', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7om75sN8aC_axtnhDFABKR7' }
+                { label: '▶️ Live Sessions', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7om75sN8aC_axtnhDFABKR7' },
                 { label: '▶️ CT Hindi Lectures', url: 'https://youtube.com/playlist?list=PL3o3mRooP_7pONIil88Bybu7uCiVbzNGm' }
             ]
         },
         {
             title: 'Course Instructor — Software Engineering',
             org: 'IIT Madras BS Programme',
-            period: 'Sep'2025',
+            period: 'Sep 2025',
             desc: 'Covered software engineering principles, testing, agile methodologies, and project management for Degree level students.',
             bullets: [
                 'Guided students through software design and architecture concepts',
