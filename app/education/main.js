@@ -1,6 +1,6 @@
-new Vue({
-    el: '#app',
-    data: {
+Vue.createApp({
+    data: function () {
+        return {
         educationalJourney: [
             {
                 title: 'B.Sc. (Hons.) in Mathematics',
@@ -83,5 +83,6 @@ new Vue({
         ],
         currentFocus: 'Software Engineering, Full-Stack Development, and teaching Data Science & Application Development at IIT Madras.',
         lookingFor: 'SDE / Full-Stack Developer roles or Research/Teaching positions in Computer Science and Data Science.'
+        };
     }
-});
+}).mount('#app');

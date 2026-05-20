@@ -28,18 +28,18 @@ shrikrishna97.github.io/
 ├── assets/
 │   ├── css/
 │   │   └── styles.css            # Dark-mode-first CSS with custom properties
-│   ├── js/
-│   │   ├── script.js             # Theme toggle, typing tagline, scroll-reveal,
-│   │   │                         #   section indicator, back-to-top, music player
-│   │   └── music-recommender.js  # Rule-based music recommender (season × time-of-day)
-│   └── php/
-│       └── process_form.php      # Server-side contact form handler
+│   └── js/
+│       ├── script.js             # Theme toggle, typing tagline, scroll-reveal,
+│       │                         #   section indicator, back-to-top
+│       ├── overlays.js           # Vue 3 SPA overlay system (Education / Achievements / Internship)
+│       ├── music-player.js       # Vue 3 floating music player widget
+│       └── music-recommender.js  # Rule-based music recommender (season × time-of-day)
 ├── app/
-│   ├── achieve.html              # Certificates & Achievements detail page
-│   ├── internship.html           # Teaching & Internship detail page
+│   ├── achieve.html              # Certificates & Achievements standalone page
+│   ├── internship.html           # Teaching & Internship standalone page
 │   ├── 404.html                  # Custom 404 error page
 │   ├── components/
-│   │   └── project-list.js       # Vue.js project-list component
+│   │   └── certificate-photo.jpg # Diploma certificate photo used in About section
 │   └── education/
 │       ├── educ.html             # Educational journey timeline page
 │       ├── educ.css              # Styles for educational journey page
@@ -57,7 +57,7 @@ shrikrishna97.github.io/
 | Markup | HTML5 |
 | Styling | CSS3 (custom properties, dark-mode-first), Bootstrap 5 |
 | Scripting | Vanilla JavaScript (ES5-compatible) |
-| UI Components | Bootstrap 5 Carousel, Vue.js 2 |
+| UI Components | Bootstrap 5 Carousel, Vue 3 |
 | Fonts | Inter — Google Fonts |
 | Icons | Font Awesome 5 · icons8 (skill pills) |
 | Music | YouTube IFrame API (audio-only background player) |

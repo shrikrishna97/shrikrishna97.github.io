@@ -35,6 +35,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
+      defer
     ></script>
     <link
       rel="stylesheet"
@@ -73,6 +74,13 @@
   </head>
 
   <body>
+    <noscript>
+      <div style="background:#f4a261;color:#000;text-align:center;padding:0.75rem 1rem;font-weight:600;font-size:0.95rem;">
+        ⚠️ JavaScript is required to view this portfolio. Please enable JS in your browser.
+      </div>
+    </noscript>
+    <!-- Reading progress bar -->
+    <div id="reading-progress" aria-hidden="true"></div>
     <div class="scrollable-container">
       <header>
         <nav class="navbar navbar-expand-md navbar-light bg-dark">
@@ -105,6 +113,9 @@
                 <a class="nav-link" href="#achievement">Achievements</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#skills-section">Skills</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#youtube">YouTube</a>
               </li>
               <li class="nav-item">
@@ -132,7 +143,7 @@
                 role="switch"
                 id="flexSwitchCheckDefault"
               />
-              <!-- <label class="form-check-label" for="flexSwitchCheckDefault"></label> -->
+              <label class="form-check-label visually-hidden" for="flexSwitchCheckDefault">Toggle Dark / Light Mode</label>
             </div>
             <!-- <button id="mode-toggle" class="btn btn-cust">Toggle Mode</button> -->
           </div>
@@ -198,7 +209,7 @@
                   <p class="professional-paragraph">
                     I’m passionate about web development, teaching, and mentoring students. I have mentored <strong>300+ students</strong>, taught <strong>5000+ students every term</strong>, handled over <strong>18,000 App Dev vivas</strong>, and actively manage an IITM BS student community platform with <strong>1 lakh+ hits</strong>.
                 </p>
-                <a href="app/education/educ.html" class="btn btn-cust"
+                <a href="#" onclick="openOverlay('education'); return false;" class="btn btn-cust"
                   >Explore My Educational Journey →</a
                 >
               </div>
@@ -206,7 +217,7 @@
                 <div class="container mt-5">
                   <div class="image-container">
                     <img
-                      src="app/components/certificate photo.jpg"
+                      src="app/components/certificate-photo.jpg"
                       alt="Shri Krishna receiving diploma certificate at IIT Madras SAC auditorium"
                       class="img-fluid rounded"
                       loading="lazy"
@@ -604,7 +615,7 @@
           </p>
           <div class="row mt-2">
             <div class="col-md-6 mb-3">
-              <a href="app/achieve.html" class="achievement-card-link">
+              <a href="#" onclick="openOverlay('achievements'); return false;" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">🏆 Certifications</h5>
@@ -620,7 +631,7 @@
               </a>
             </div>
             <div class="col-md-6 mb-3">
-              <a href="app/internship.html" class="achievement-card-link">
+              <a href="#" onclick="openOverlay('internship'); return false;" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">💼 Internship &amp; Teaching Work</h5>
@@ -635,7 +646,7 @@
               </a>
             </div>
             <div class="col-md-6 mb-3">
-              <a href="app/education/educ.html" class="achievement-card-link">
+              <a href="#" onclick="openOverlay('education'); return false;" class="achievement-card-link">
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">🎓 IIT Madras BS Degree</h5>
@@ -1047,9 +1058,11 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#achievement">Achievements</a></li>
+                <li><a href="#skills-section">Skills</a></li>
                 <li><a href="#youtube">Teaching &amp; Content</a></li>
                 <li><a href="#blogs">Blogs &amp; Articles</a></li>
                 <li><a href="#activities">Podcasts &amp; Activities</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="static/Shri-Krishna-Pandey-Resume-2024-11-19.pdf" target="_blank">Resume (PDF)</a></li>
               </ul>
             </div>
@@ -1083,48 +1096,12 @@
     <!-- Back-to-top button -->
     <button id="back-to-top" aria-label="Back to top" title="Back to top">&#8679;</button>
 
-    <!-- Floating music toggle (shown after modal is answered) -->
-    <button id="music-toggle" aria-label="Play music" title="Play music" hidden>
-      <span id="music-toggle-icon">♪</span>
-    </button>
-
-    <!-- Now-playing badge (appears above the toggle while music is playing) -->
-    <div id="music-info-badge" class="music-info-badge" hidden></div>
-
-    <!-- YouTube IFrame player container (audio-only; visually hidden) -->
-    <div id="yt-player-wrap" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
-      <div id="yt-player"></div>
-    </div>
-
-    <!-- Music consent modal -->
-    <div id="music-modal" class="music-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="music-modal-title">
-      <div class="music-modal-card">
-        <div class="music-modal-icon">🎵</div>
-        <h3 id="music-modal-title" class="music-modal-title">Welcome!</h3>
-        <p id="music-modal-desc" class="music-modal-text">Would you like to listen to some background music while browsing?</p>
-        <div class="music-modal-actions">
-          <button id="music-yes-btn" class="btn-music-yes">♪ Yes, please!</button>
-          <button id="music-no-btn" class="btn-music-no">No, thanks</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Song-end prompt modal -->
-    <div id="music-end-modal" class="music-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="music-end-modal-title">
-      <div class="music-modal-card">
-        <div class="music-modal-icon">🎶</div>
-        <h3 id="music-end-modal-title" class="music-modal-title">Song finished!</h3>
-        <p id="music-end-modal-desc" class="music-modal-text">What would you like to do next?</p>
-        <div class="music-modal-actions">
-          <button id="music-replay-btn" class="btn-music-yes">↩ Replay</button>
-          <button id="music-next-btn" class="btn-music-no">🎲 Next Song</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- YouTube IFrame API (must come before music-recommender.js and script.js) -->
+    <!-- YouTube IFrame API (must come before music-recommender.js and music-player.js) -->
     <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="assets/js/music-recommender.js"></script>
+    <script src="assets/js/music-player.js"></script>
+    <script src="assets/js/overlays.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
