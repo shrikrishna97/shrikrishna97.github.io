@@ -90,7 +90,7 @@ function _createYouTubePlayer(videoId, startSeconds) {
 /** Called automatically by the YouTube IFrame API once it finishes loading. */
 window.onYouTubeIframeAPIReady = function () {
     _ytApiReady = true;
-    if (_musicWanted && _recommendation) {
+    if (_musicWanted && _recommendation && sessionStorage.getItem('musicPaused') !== '1') {
         var savedId  = sessionStorage.getItem('musicVideoId');
         var startPos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
         _createYouTubePlayer(savedId || _recommendation.song.id, startPos);
@@ -297,7 +297,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // player actually starts.  Just make the toggle button visible.
             _musicWanted = true;
             if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
-            if (_ytApiReady && _recommendation) {
+            // Only auto-start if the user hadn't temporarily paused before navigating
+            if (sessionStorage.getItem('musicPaused') !== '1' && _ytApiReady && _recommendation) {
                 // Prefer saved videoId (may differ from today's recommendation if
                 // the user had already clicked "Next Song" on a sub-page).
                 var savedId  = sessionStorage.getItem('musicVideoId');
@@ -312,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
             musicYesBtn.addEventListener('click', function () {
                 sessionStorage.setItem('musicPromptAnswered', '1');
                 sessionStorage.setItem('musicChoice', 'yes');
+                sessionStorage.removeItem('musicPaused');
                 musicModal.classList.add('hidden');
                 _musicWanted = true;
                 // Just show the toggle button — onReady will call _setMusicPlaying(true)
@@ -337,16 +339,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (_ytPlayer && typeof _ytPlayer.getPlayerState === 'function' &&
                     _ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
                     _ytPlayer.pauseVideo();
-                    sessionStorage.setItem('musicChoice', 'no');
+                    // Use a dedicated pause flag so 'musicChoice' stays 'yes';
+                    // this lets other pages know the user wants music but is paused.
+                    sessionStorage.setItem('musicPaused', '1');
                     _setMusicPlaying(false);
                 } else if (_ytPlayer && typeof _ytPlayer.playVideo === 'function') {
                     _ytPlayer.playVideo();
+                    sessionStorage.removeItem('musicPaused');
                     sessionStorage.setItem('musicChoice', 'yes');
                     _setMusicPlaying(true);
                 } else {
                     // Player not yet created — start it now
                     _musicWanted = true;
                     sessionStorage.setItem('musicChoice', 'yes');
+                    sessionStorage.removeItem('musicPaused');
                     if (_ytApiReady && _recommendation) {
                         var savedId  = sessionStorage.getItem('musicVideoId');
                         var startPos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
@@ -404,8 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('pagehide', function () {
         if (_ytPlayer && typeof _ytPlayer.getCurrentTime === 'function') {
             try {
-                var t = _ytPlayer.getCurrentTime();
-                if (t > 0) { sessionStorage.setItem('musicPosition', Math.floor(t)); }
+                sessionStorage.setItem('musicPosition', Math.floor(_ytPlayer.getCurrentTime()));
             } catch (e) { /* ignore */ }
         }
     });

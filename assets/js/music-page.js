@@ -60,10 +60,7 @@
     function saveState() {
         if (_ytPlayer && typeof _ytPlayer.getCurrentTime === 'function') {
             try {
-                var t = _ytPlayer.getCurrentTime();
-                if (t > 0) {
-                    sessionStorage.setItem('musicPosition', Math.floor(t));
-                }
+                sessionStorage.setItem('musicPosition', Math.floor(_ytPlayer.getCurrentTime()));
             } catch (e) { /* ignore */ }
         }
     }
@@ -109,7 +106,7 @@
         _ytApiReady = true;
         var choice  = sessionStorage.getItem('musicChoice');
         var videoId = sessionStorage.getItem('musicVideoId');
-        if (choice === 'yes' && videoId) {
+        if (choice === 'yes' && videoId && sessionStorage.getItem('musicPaused') !== '1') {
             var pos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
             createPlayer(videoId, pos);
         }
@@ -212,12 +209,14 @@
         var choice = sessionStorage.getItem('musicChoice');
         if (choice === 'yes' && savedVideoId) {
             _musicToggleEl.removeAttribute('hidden');
-            if (_ytApiReady) {
-                var pos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
-                createPlayer(savedVideoId, pos);
+            if (sessionStorage.getItem('musicPaused') !== '1') {
+                if (_ytApiReady) {
+                    var pos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
+                    createPlayer(savedVideoId, pos);
+                }
+                // If _ytApiReady is false the onYouTubeIframeAPIReady callback (above) will
+                // call createPlayer once the API has finished loading.
             }
-            // If _ytApiReady is false the onYouTubeIframeAPIReady callback (above) will
-            // call createPlayer once the API has finished loading.
         }
 
         /* ── Toggle play / pause ─────────────────────────────── */
@@ -225,10 +224,13 @@
             if (_ytPlayer && typeof _ytPlayer.getPlayerState === 'function' &&
                 _ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
                 _ytPlayer.pauseVideo();
-                sessionStorage.setItem('musicChoice', 'no');
+                // Use a dedicated pause flag so 'musicChoice' stays 'yes';
+                // this lets other pages know the user wants music but is paused.
+                sessionStorage.setItem('musicPaused', '1');
                 setMusicPlaying(false);
             } else if (_ytPlayer && typeof _ytPlayer.playVideo === 'function') {
                 _ytPlayer.playVideo();
+                sessionStorage.removeItem('musicPaused');
                 sessionStorage.setItem('musicChoice', 'yes');
                 setMusicPlaying(true);
             }
