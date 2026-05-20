@@ -1,3 +1,75 @@
+// ── Global YouTube player state ───────────────────────────────────────────
+// These must live outside DOMContentLoaded so that onYouTubeIframeAPIReady
+// (a global callback fired by the YouTube IFrame API) can access them.
+var _ytPlayer       = null;
+var _ytApiReady     = false;
+var _musicWanted    = false;
+var _recommendation = null;
+var _musicToggleEl  = null;
+var _musicIconEl    = null;
+var _musicBadgeEl   = null;
+
+function _setMusicPlaying(playing) {
+    if (!_musicToggleEl) return;
+    _musicToggleEl.removeAttribute('hidden');
+    if (playing) {
+        _musicIconEl.textContent = '⏸';
+        _musicToggleEl.classList.add('playing');
+        _musicToggleEl.setAttribute('aria-label', 'Pause music');
+        _musicToggleEl.setAttribute('title', 'Pause music');
+        if (_musicBadgeEl && _recommendation) {
+            _musicBadgeEl.textContent = '🎵 ' + _recommendation.song.title + ' · ' + _recommendation.song.artist;
+            _musicBadgeEl.removeAttribute('hidden');
+        }
+    } else {
+        _musicIconEl.textContent = '♪';
+        _musicToggleEl.classList.remove('playing');
+        _musicToggleEl.setAttribute('aria-label', 'Play music');
+        _musicToggleEl.setAttribute('title', 'Play music');
+        if (_musicBadgeEl) {
+            _musicBadgeEl.setAttribute('hidden', '');
+        }
+    }
+}
+
+function _createYouTubePlayer(videoId) {
+    if (!window.YT || !YT.Player || _ytPlayer) return;   // guard: never create twice
+    _ytPlayer = new YT.Player('yt-player', {
+        height: '1',
+        width: '1',
+        videoId: videoId,
+        playerVars: {
+            autoplay:        1,
+            controls:        0,
+            disablekb:       1,
+            fs:              0,
+            modestbranding:  1,
+            playsinline:     1,
+            rel:             0,
+            loop:            1,
+            playlist:        videoId   // required for loop to work
+        },
+        events: {
+            onReady: function (e) {
+                e.target.setVolume(40);
+                e.target.playVideo();
+                _setMusicPlaying(true);
+            },
+            onError: function () {
+                _setMusicPlaying(false);
+            }
+        }
+    });
+}
+
+/** Called automatically by the YouTube IFrame API once it finishes loading. */
+window.onYouTubeIframeAPIReady = function () {
+    _ytApiReady = true;
+    if (_musicWanted && _recommendation) {
+        _createYouTubePlayer(_recommendation.song.id);
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
     // ── Persist dark/light mode preference ───────────────────────
     var modeToggleCheckbox = document.getElementById('flexSwitchCheckDefault');
@@ -162,6 +234,92 @@ document.addEventListener('DOMContentLoaded', function () {
             el.classList.add('reveal-hidden');
             revealObserver.observe(el);
         });
+    }
+
+    // ── Background music with YouTube IFrame API ─────────────────
+    _musicToggleEl = document.getElementById('music-toggle');
+    _musicIconEl   = document.getElementById('music-toggle-icon');
+    _musicBadgeEl  = document.getElementById('music-info-badge');
+
+    var musicModal  = document.getElementById('music-modal');
+    var musicYesBtn = document.getElementById('music-yes-btn');
+    var musicNoBtn  = document.getElementById('music-no-btn');
+    var modalDesc   = document.getElementById('music-modal-desc');
+
+    // Get recommendation and update modal description
+    if (typeof MusicRecommender !== 'undefined') {
+        _recommendation = MusicRecommender.recommend();
+        if (modalDesc && _recommendation) {
+            modalDesc.textContent =
+                'I\'ve picked some ' + _recommendation.label +
+                ' for you. Want to listen while you browse?';
+        }
+    }
+
+    if (musicModal) {
+        var answered = sessionStorage.getItem('musicPromptAnswered');
+        var MODAL_DELAY_MS = 900;
+        if (!answered) {
+            setTimeout(function () {
+                musicModal.classList.remove('hidden');
+            }, MODAL_DELAY_MS);
+        } else if (sessionStorage.getItem('musicChoice') === 'yes') {
+            // Don't mark UI as "playing" yet — let YouTube onReady do that once the
+            // player actually starts.  Just make the toggle button visible.
+            _musicWanted = true;
+            if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
+            if (_ytApiReady && _recommendation) {
+                _createYouTubePlayer(_recommendation.song.id);
+            }
+        } else {
+            _setMusicPlaying(false);
+        }
+
+        if (musicYesBtn) {
+            musicYesBtn.addEventListener('click', function () {
+                sessionStorage.setItem('musicPromptAnswered', '1');
+                sessionStorage.setItem('musicChoice', 'yes');
+                musicModal.classList.add('hidden');
+                _musicWanted = true;
+                // Just show the toggle button — onReady will call _setMusicPlaying(true)
+                // once the YouTube player is actually playing.
+                if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
+                if (_ytApiReady && _recommendation) {
+                    _createYouTubePlayer(_recommendation.song.id);
+                }
+            });
+        }
+
+        if (musicNoBtn) {
+            musicNoBtn.addEventListener('click', function () {
+                sessionStorage.setItem('musicPromptAnswered', '1');
+                sessionStorage.setItem('musicChoice', 'no');
+                musicModal.classList.add('hidden');
+                _setMusicPlaying(false);
+            });
+        }
+
+        if (_musicToggleEl) {
+            _musicToggleEl.addEventListener('click', function () {
+                if (_ytPlayer && typeof _ytPlayer.getPlayerState === 'function' &&
+                    _ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+                    _ytPlayer.pauseVideo();
+                    sessionStorage.setItem('musicChoice', 'no');
+                    _setMusicPlaying(false);
+                } else if (_ytPlayer && typeof _ytPlayer.playVideo === 'function') {
+                    _ytPlayer.playVideo();
+                    sessionStorage.setItem('musicChoice', 'yes');
+                    _setMusicPlaying(true);
+                } else {
+                    // Player not yet created — start it now
+                    _musicWanted = true;
+                    sessionStorage.setItem('musicChoice', 'yes');
+                    if (_ytApiReady && _recommendation) {
+                        _createYouTubePlayer(_recommendation.song.id);
+                    }
+                }
+            });
+        }
     }
 });
 
