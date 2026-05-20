@@ -323,10 +323,10 @@
                             var expectedAtCheck  = this.expectedVideoId;
                             setTimeout(function () {
                                 if (!self.ytPlayer) return;
-                                var d3  = playerEl.getVideoData ? playerEl.getVideoData() : {};
-                                var id3 = d3.video_id || '';
+                                var recheckData  = playerEl.getVideoData ? playerEl.getVideoData() : {};
+                                var recheckId    = recheckData.video_id || '';
                                 /* Only correct state if the expected song is now confirmed */
-                                if (id3 && id3 === expectedAtCheck && id3 === self.expectedVideoId) {
+                                if (recheckId && recheckId === expectedAtCheck && recheckId === self.expectedVideoId) {
                                     self.isAdPlaying = false;
                                     self.isPlaying   = true;
                                     self.playingSong = self.currentSong;
