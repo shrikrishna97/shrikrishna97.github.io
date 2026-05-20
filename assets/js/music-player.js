@@ -161,7 +161,8 @@
                     expectedVideoId:  null,
 
                     // Current song
-                    currentSong:      null,   // { id, title, artist }
+                    currentSong:      null,   // { id, title, artist } — the song we intend to play
+                    playingSong:      null,   // { id, title, artist } — the song confirmed playing (for display)
                     recommendation:   null,   // from MusicRecommender.recommend()
 
                     // UI
@@ -190,8 +191,8 @@
                 },
                 badgeText: function () {
                     if (this.isAdPlaying) return '📢 Ad playing, please wait…';
-                    if (this.isPlaying && this.currentSong) {
-                        return '🎵 ' + this.currentSong.title + ' · ' + this.currentSong.artist;
+                    if (this.isPlaying && this.playingSong) {
+                        return '🎵 ' + this.playingSong.title + ' · ' + this.playingSong.artist;
                     }
                     return '';
                 },
@@ -218,7 +219,10 @@
                         var id     = sessionStorage.getItem('musicVideoId');
                         var title  = sessionStorage.getItem('musicTitle')  || '';
                         var artist = sessionStorage.getItem('musicArtist') || '';
-                        if (id) { this.currentSong = { id: id, title: title, artist: artist }; }
+                        if (id) {
+                            this.currentSong = { id: id, title: title, artist: artist };
+                            this.playingSong = this.currentSong;
+                        }
                     } catch (e) { /* ignore */ }
                 },
 
@@ -234,6 +238,8 @@
 
                 savePosition: function () {
                     try {
+                        /* Don't save the ad's playback position */
+                        if (this.isAdPlaying) return;
                         if (this.ytPlayer && typeof this.ytPlayer.getCurrentTime === 'function') {
                             sessionStorage.setItem('musicPosition',
                                 Math.floor(this.ytPlayer.getCurrentTime()));
@@ -283,7 +289,10 @@
 
                 /* Ad detection: compare current playing ID with expected ID.
                    During ad playback the IFrame API reports either an empty string
-                   or a different video_id.  Both cases are treated as ads. */
+                   or a different video_id.  An empty video_id is an immediate ad
+                   signal (mute at once).  A non-empty but unexpected ID can be a
+                   brief transition artefact, so we re-check after 400 ms before
+                   flagging it as an ad, to avoid false positives when songs change. */
                 handleStateChange: function (e) {
                     var self = this;
 
@@ -291,19 +300,48 @@
                         var data      = e.target.getVideoData ? e.target.getVideoData() : {};
                         var currentId = data.video_id || '';
 
-                        if (currentId !== this.expectedVideoId) {
-                            /* A different (or empty) video_id → ad/trailer; mute it */
-                            this.isAdPlaying = true;
-                            this.isPlaying   = false;
-                            e.target.mute();
-                        } else {
+                        if (currentId === this.expectedVideoId) {
                             /* The requested song is playing */
                             this.isAdPlaying = false;
                             this.isPlaying   = true;
+                            this.playingSong = this.currentSong;   // update display name now
                             this.musicPaused = false;
                             e.target.unMute();
                             e.target.setVolume(40);
                             try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
+
+                        } else if (!currentId) {
+                            /* Empty video_id → YouTube ad; mute immediately */
+                            this.isAdPlaying = true;
+                            this.isPlaying   = false;
+                            e.target.mute();
+
+                        } else {
+                            /* Non-empty but unexpected video_id.
+                               This often happens transiently when loadVideoById()
+                               is called (the API briefly reports the old video).
+                               Re-check after 400 ms; only then treat it as an ad. */
+                            var player = e.target;
+                            setTimeout(function () {
+                                if (!self.ytPlayer) return;
+                                var d2  = player.getVideoData ? player.getVideoData() : {};
+                                var id2 = d2.video_id || '';
+                                if (id2 === self.expectedVideoId) {
+                                    /* Resolved to the expected song – not an ad */
+                                    self.isAdPlaying = false;
+                                    self.isPlaying   = true;
+                                    self.playingSong = self.currentSong;
+                                    self.musicPaused = false;
+                                    player.unMute();
+                                    player.setVolume(40);
+                                    try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
+                                } else {
+                                    /* Still a different ID after the settle window → real ad */
+                                    self.isAdPlaying = true;
+                                    self.isPlaying   = false;
+                                    player.mute();
+                                }
+                            }, 400);
                         }
 
                     } else if (e.data === YT.PlayerState.PAUSED) {
