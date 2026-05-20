@@ -12,7 +12,8 @@ Hi, I'm **Shri Krishna Pandey** — IITM Alumnus, Course Instructor at IIT Madra
 
 - 🎓 BS in Data Science & Applications from IIT Madras (CGPA 8.79)
 - 👨‍🏫 Course Instructor for App Dev I & II, Computational Thinking, Software Engineering
-- 🌐 Managed IITM BS student communities with **80,000+ hits** on the resource website
+- 🌐 Managed IITM BS student communities with over **Lakh+ hits** on the resource website
+- Taught over 5000+ thousand student every term ( 3 terms a year ), handled over 18 thousand vivas for app dev 
 - 📚 Mentored **300+ students** in System Commands
 
 ---
