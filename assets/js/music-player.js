@@ -372,12 +372,24 @@
                         }
 
                     } else if (e.data === YT.PlayerState.ENDED) {
-                        /* Check whether the ad ended or the actual song ended */
+                        /* Check whether the ad ended or the actual song ended.
+                           Only treat it as an ad ending when we have a confirmed
+                           different non-empty video_id, or when we already knew an
+                           ad was playing and the video_id is empty.  Any other case
+                           (including a transient empty video_id while no ad was flagged)
+                           is treated as the real song ending so the end modal always shows. */
                         var data2   = e.target.getVideoData ? e.target.getVideoData() : {};
                         var endedId = data2.video_id || '';
-                        if (endedId !== this.expectedVideoId) {
-                            /* Ad ended – the real song will start automatically */
+                        if (endedId && endedId !== this.expectedVideoId) {
+                            /* A confirmed different video ended → it was an ad */
                             this.isAdPlaying = false;
+                            this.isPlaying   = false;
+                            return;
+                        }
+                        if (!endedId && this.isAdPlaying) {
+                            /* Empty video_id ended while we knew an ad was playing → ad ended */
+                            this.isAdPlaying = false;
+                            this.isPlaying   = false;
                             return;
                         }
                         /* Song truly ended */
