@@ -1094,6 +1094,27 @@ section, .section-with-background {
   color: var(--accent-cyan);
 }
 
+/* Now-playing badge — floats above the music toggle button */
+.music-info-badge {
+  position: fixed;
+  bottom: 136px;
+  right: 8px;
+  z-index: 1000;
+  max-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: slideUpCard 0.3s ease;
+  pointer-events: none;
+}
+
 /* Floating music toggle — sits just above the back-to-top button */
 #music-toggle {
   position: fixed;
@@ -1151,6 +1172,7 @@ section, .section-with-background {
   #section-indicator,
   #back-to-top,
   #music-toggle,
+  #music-info-badge,
   #music-modal,
   header,
   footer,

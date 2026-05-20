@@ -1101,17 +1101,20 @@
       <span id="music-toggle-icon">♪</span>
     </button>
 
-    <!-- Background music — replace static/music.mp3 with your own track -->
-    <audio id="bg-music" loop preload="none">
-      <source src="static/music.mp3" type="audio/mpeg" />
-    </audio>
+    <!-- Now-playing badge (appears above the toggle while music is playing) -->
+    <div id="music-info-badge" class="music-info-badge" hidden></div>
+
+    <!-- YouTube IFrame player container (audio-only; visually hidden) -->
+    <div id="yt-player-wrap" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+      <div id="yt-player"></div>
+    </div>
 
     <!-- Music consent modal -->
     <div id="music-modal" class="music-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="music-modal-title">
       <div class="music-modal-card">
         <div class="music-modal-icon">🎵</div>
         <h3 id="music-modal-title" class="music-modal-title">Welcome!</h3>
-        <p class="music-modal-text">Would you like to listen to some background music while browsing?</p>
+        <p id="music-modal-desc" class="music-modal-text">Would you like to listen to some background music while browsing?</p>
         <div class="music-modal-actions">
           <button id="music-yes-btn" class="btn-music-yes">♪ Yes, please!</button>
           <button id="music-no-btn" class="btn-music-no">No, thanks</button>
@@ -1119,6 +1122,9 @@
       </div>
     </div>
 
+    <!-- YouTube IFrame API (must come before music-recommender.js and script.js) -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="music-recommender.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
