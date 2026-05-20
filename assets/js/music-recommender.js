@@ -67,6 +67,22 @@ var MusicRecommender = (function () {
         }
     };
 
+    // ── Indian top-rated songs ────────────────────────────────────────────────
+    // Mixed into the "Next Song" pool. Popular, family-friendly Bollywood tracks
+    // from official T-Series / Sony Music India / Zee Music uploads.
+    var INDIAN_SONGS = [
+        { id: 'IJq0aryzkTw', title: 'Tum Hi Ho',               artist: 'Arijit Singh'                 },
+        { id: 'kJf8FhC1fCM', title: 'Kesariya',                artist: 'Arijit Singh'                 },
+        { id: 'vHUUd7S6EaA', title: 'Ik Vaari Aa',             artist: 'Arijit Singh (Raabta)'        },
+        { id: 'Y2X07ABzNaA', title: 'Tujhe Kitna Chahne Lage', artist: 'Arijit Singh (Kabir Singh)'   },
+        { id: 'sEGBbWVIEPM', title: 'Ae Dil Hai Mushkil',      artist: 'Arijit Singh'                 },
+        { id: 'HDiPptNdDaQ', title: 'Channa Mereya',           artist: 'Arijit Singh'                 },
+        { id: '34kf6M3PVr4', title: 'Raataan Lambiyan',        artist: 'Jubin Nautiyal & Asees Kaur'  },
+        { id: 'BddP6PYo2gs', title: 'Agar Tum Saath Ho',       artist: 'Arijit Singh & Alka Yagnik'   },
+        { id: 'pVkdQRWBLmg', title: 'Dil Diyan Gallan',        artist: 'Atif Aslam'                   },
+        { id: 'xKwBSCfGG_k', title: 'Kabira',                  artist: 'Tochi Raina & Rekha Bhardwaj' }
+    ];
+
     // ── Helpers ──────────────────────────────────────────────────────────────
 
     /** Returns the season name for a 0-indexed month (0 = January). */
@@ -83,18 +99,19 @@ var MusicRecommender = (function () {
     }
 
     /**
-     * Returns a song from the current season/time pool that is different from
-     * the one identified by currentId.  Falls back to any song if the pool has
-     * only one track.
+     * Returns a song from the current season/time pool (plus Indian songs) that
+     * is different from the one identified by currentId.
+     * Falls back to any song if the pool has only one track.
      */
     function recommendNext(currentId) {
         var now       = new Date();
         var season    = getSeason(now.getMonth());
         var timeOfDay = getTimeOfDay(now.getHours());
-        var songs     = PLAYLIST[season][timeOfDay];
-        var others    = songs.filter(function (s) { return s.id !== currentId; });
-        var pool      = others.length ? others : songs;
-        var idx       = Math.floor(Math.random() * pool.length);
+        // Merge season/time songs with Indian songs for variety
+        var songs  = PLAYLIST[season][timeOfDay].concat(INDIAN_SONGS);
+        var others = songs.filter(function (s) { return s.id !== currentId; });
+        var pool   = others.length ? others : songs;
+        var idx    = Math.floor(Math.random() * pool.length);
         return pool[idx];
     }
 
