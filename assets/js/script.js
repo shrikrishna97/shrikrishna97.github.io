@@ -44,8 +44,16 @@ function _showSongEndModal() {
     _songEndModalEl.classList.remove('hidden');
 }
 
-function _createYouTubePlayer(videoId) {
+function _createYouTubePlayer(videoId, startSeconds) {
     if (!window.YT || !YT.Player || _ytPlayer) return;   // guard: never create twice
+    // Persist the video identity so sub-pages can resume playback
+    try {
+        sessionStorage.setItem('musicVideoId', videoId);
+        if (_recommendation) {
+            sessionStorage.setItem('musicTitle',  _recommendation.song.title);
+            sessionStorage.setItem('musicArtist', _recommendation.song.artist);
+        }
+    } catch (e) { /* ignore */ }
     _ytPlayer = new YT.Player('yt-player', {
         height: '1',
         width: '1',
@@ -57,7 +65,8 @@ function _createYouTubePlayer(videoId) {
             fs:              0,
             modestbranding:  1,
             playsinline:     1,
-            rel:             0
+            rel:             0,
+            start:           startSeconds || 0
         },
         events: {
             onReady: function (e) {
@@ -82,7 +91,9 @@ function _createYouTubePlayer(videoId) {
 window.onYouTubeIframeAPIReady = function () {
     _ytApiReady = true;
     if (_musicWanted && _recommendation) {
-        _createYouTubePlayer(_recommendation.song.id);
+        var savedId  = sessionStorage.getItem('musicVideoId');
+        var startPos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
+        _createYouTubePlayer(savedId || _recommendation.song.id, startPos);
     }
 };
 
@@ -287,7 +298,11 @@ document.addEventListener('DOMContentLoaded', function () {
             _musicWanted = true;
             if (_musicToggleEl) { _musicToggleEl.removeAttribute('hidden'); }
             if (_ytApiReady && _recommendation) {
-                _createYouTubePlayer(_recommendation.song.id);
+                // Prefer saved videoId (may differ from today's recommendation if
+                // the user had already clicked "Next Song" on a sub-page).
+                var savedId  = sessionStorage.getItem('musicVideoId');
+                var startPos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
+                _createYouTubePlayer(savedId || _recommendation.song.id, startPos);
             }
         } else {
             _setMusicPlaying(false);
@@ -333,7 +348,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     _musicWanted = true;
                     sessionStorage.setItem('musicChoice', 'yes');
                     if (_ytApiReady && _recommendation) {
-                        _createYouTubePlayer(_recommendation.song.id);
+                        var savedId  = sessionStorage.getItem('musicVideoId');
+                        var startPos = parseInt(sessionStorage.getItem('musicPosition') || '0', 10);
+                        _createYouTubePlayer(savedId || _recommendation.song.id, startPos);
                     }
                 }
             });
@@ -369,11 +386,28 @@ document.addEventListener('DOMContentLoaded', function () {
                         timeOfDay: _recommendation ? _recommendation.timeOfDay : '',
                         label:     _recommendation ? _recommendation.label     : ''
                     };
+                    // Keep sessionStorage in sync so sub-pages know the current song
+                    try {
+                        sessionStorage.setItem('musicVideoId', nextSong.id);
+                        sessionStorage.setItem('musicTitle',   nextSong.title);
+                        sessionStorage.setItem('musicArtist',  nextSong.artist);
+                        sessionStorage.setItem('musicPosition', '0');
+                    } catch (e) { /* ignore */ }
                     _ytPlayer.loadVideoById(nextSong.id);
                     _setMusicPlaying(true);
                 }
             }
         });
     }
+
+    // ── Save playback position before navigating away ─────────────
+    window.addEventListener('pagehide', function () {
+        if (_ytPlayer && typeof _ytPlayer.getCurrentTime === 'function') {
+            try {
+                var t = _ytPlayer.getCurrentTime();
+                if (t > 0) { sessionStorage.setItem('musicPosition', Math.floor(t)); }
+            } catch (e) { /* ignore */ }
+        }
+    });
 });
 
