@@ -40,19 +40,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
     <meta name="theme-color" content="#0d1b2a" />
-    <style>
-      .section-with-background {
-        background-image: url("static/pxfuel.com.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        min-height: 420px;
-        height: auto;
-        position: relative;
-      }
-    </style>
     <title>Shri Krishna🦚</title>
 
     <!-- Schema.org Person structured data (rich search results) -->
@@ -87,7 +76,7 @@
     <div class="scrollable-container">
       <header>
         <nav class="navbar navbar-expand-md navbar-light bg-dark">
-          <img src="static/sk.png" alt="Avatar" class="avatar" />
+          <img src="static/sk.png" alt="Shri Krishna Pandey" class="avatar" />
           <a class="navbar-brand text-light" href="#">Shri Krishna🦚</a>
           <button
             class="navbar-toggler"
@@ -204,12 +193,10 @@
                 </div>
                 <p class="typing-tagline" id="typing-tagline"><span class="typing-cursor"></span></p>
                 <p class="professional-paragraph">
-                  <p class="professional-paragraph"> 
                     I'm <strong>Shri Krishna Pandey</strong> — an IITM alumnus, Course Instructor, Web Developer, and Python Programmer. I hold a <strong>BS in Data Science &amp; Applications from IIT Madras</strong> (CGPA: 8.79) along with a B.Sc. (Hons.) in Mathematics.
                   </p>
                   <p class="professional-paragraph">
                     I’m passionate about web development, teaching, and mentoring students. I have mentored <strong>300+ students</strong>, taught <strong>5000+ students every term</strong>, handled over <strong>18,000 App Dev vivas</strong>, and actively manage an IITM BS student community platform with <strong>1 lakh+ hits</strong>.
-                  </p>
                 </p>
                 <a href="app/education/educ.html" class="btn btn-cust"
                   >Explore My Educational Journey →</a
@@ -1122,9 +1109,22 @@
       </div>
     </div>
 
+    <!-- Song-end prompt modal -->
+    <div id="music-end-modal" class="music-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="music-end-modal-title">
+      <div class="music-modal-card">
+        <div class="music-modal-icon">🎶</div>
+        <h3 id="music-end-modal-title" class="music-modal-title">Song finished!</h3>
+        <p id="music-end-modal-desc" class="music-modal-text">What would you like to do next?</p>
+        <div class="music-modal-actions">
+          <button id="music-replay-btn" class="btn-music-yes">↩ Replay</button>
+          <button id="music-next-btn" class="btn-music-no">🎲 Next Song</button>
+        </div>
+      </div>
+    </div>
+
     <!-- YouTube IFrame API (must come before music-recommender.js and script.js) -->
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="music-recommender.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/music-recommender.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

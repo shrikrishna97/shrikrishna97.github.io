@@ -285,7 +285,7 @@ h2.text-center {
   width: 100%;
   max-width: 560px;
   height: 240px;
-  background-image: url("static/Resume_photo.png");
+  background-image: url("../../static/Resume_photo.png");
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -1180,6 +1180,7 @@ section, .section-with-background {
   #music-toggle,
   #music-info-badge,
   #music-modal,
+  #music-end-modal,
   header,
   footer,
   #about, #experience, #projects, #achievement,
@@ -1201,4 +1202,15 @@ section, .section-with-background {
     opacity: 1 !important;
     animation: none !important;
   }
+}
+
+/* ── Hero section background image ──────────────────────────────────────── */
+.section-with-background {
+  background-image: url("../../static/pxfuel.com.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 420px;
+  height: auto;
+  position: relative;
 }

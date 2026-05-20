@@ -8,6 +8,8 @@ var _recommendation = null;
 var _musicToggleEl  = null;
 var _musicIconEl    = null;
 var _musicBadgeEl   = null;
+var _songEndModalEl = null;
+var _songEndDescEl  = null;
 
 function _setMusicPlaying(playing) {
     if (!_musicToggleEl) return;
@@ -32,6 +34,16 @@ function _setMusicPlaying(playing) {
     }
 }
 
+function _showSongEndModal() {
+    if (!_songEndModalEl) return;
+    if (_songEndDescEl && _recommendation) {
+        _songEndDescEl.textContent =
+            '"' + _recommendation.song.title + '" by ' + _recommendation.song.artist +
+            ' has finished. What would you like to do next?';
+    }
+    _songEndModalEl.classList.remove('hidden');
+}
+
 function _createYouTubePlayer(videoId) {
     if (!window.YT || !YT.Player || _ytPlayer) return;   // guard: never create twice
     _ytPlayer = new YT.Player('yt-player', {
@@ -45,15 +57,19 @@ function _createYouTubePlayer(videoId) {
             fs:              0,
             modestbranding:  1,
             playsinline:     1,
-            rel:             0,
-            loop:            1,
-            playlist:        videoId   // required for loop to work
+            rel:             0
         },
         events: {
             onReady: function (e) {
                 e.target.setVolume(40);
                 e.target.playVideo();
                 _setMusicPlaying(true);
+            },
+            onStateChange: function (e) {
+                if (e.data === YT.PlayerState.ENDED) {
+                    _setMusicPlaying(false);
+                    _showSongEndModal();
+                }
             },
             onError: function () {
                 _setMusicPlaying(false);
@@ -237,9 +253,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ── Background music with YouTube IFrame API ─────────────────
-    _musicToggleEl = document.getElementById('music-toggle');
-    _musicIconEl   = document.getElementById('music-toggle-icon');
-    _musicBadgeEl  = document.getElementById('music-info-badge');
+    _musicToggleEl  = document.getElementById('music-toggle');
+    _musicIconEl    = document.getElementById('music-toggle-icon');
+    _musicBadgeEl   = document.getElementById('music-info-badge');
+    _songEndModalEl = document.getElementById('music-end-modal');
+    _songEndDescEl  = document.getElementById('music-end-modal-desc');
 
     var musicModal  = document.getElementById('music-modal');
     var musicYesBtn = document.getElementById('music-yes-btn');
@@ -320,6 +338,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
+    }
+
+    // ── Song-end prompt (Replay / Next Song) ─────────────────────
+    var musicReplayBtn  = document.getElementById('music-replay-btn');
+    var musicNextBtn    = document.getElementById('music-next-btn');
+
+    if (musicReplayBtn) {
+        musicReplayBtn.addEventListener('click', function () {
+            if (_songEndModalEl) { _songEndModalEl.classList.add('hidden'); }
+            if (_ytPlayer) {
+                _ytPlayer.seekTo(0);
+                _ytPlayer.playVideo();
+                _setMusicPlaying(true);
+            }
+        });
+    }
+
+    if (musicNextBtn) {
+        musicNextBtn.addEventListener('click', function () {
+            if (_songEndModalEl) { _songEndModalEl.classList.add('hidden'); }
+            if (typeof MusicRecommender !== 'undefined' && _ytPlayer) {
+                var nextSong = MusicRecommender.recommendNext(
+                    _recommendation ? _recommendation.song.id : null
+                );
+                if (nextSong) {
+                    _recommendation = {
+                        song:      nextSong,
+                        season:    _recommendation ? _recommendation.season    : '',
+                        timeOfDay: _recommendation ? _recommendation.timeOfDay : '',
+                        label:     _recommendation ? _recommendation.label     : ''
+                    };
+                    _ytPlayer.loadVideoById(nextSong.id);
+                    _setMusicPlaying(true);
+                }
+            }
+        });
     }
 });
 
