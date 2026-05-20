@@ -202,8 +202,9 @@
                         : 'Would you like to listen to some background music while browsing?';
                 },
                 endModalText: function () {
-                    return this.currentSong
-                        ? '"' + this.currentSong.title + '" by ' + this.currentSong.artist + ' has finished. What would you like to do next?'
+                    var displaySong = this.playingSong || this.currentSong;
+                    return displaySong
+                        ? '"' + displaySong.title + '" by ' + displaySong.artist + ' has finished. What would you like to do next?'
                         : 'What would you like to do next?';
                 }
             },
@@ -311,10 +312,31 @@
                             try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
 
                         } else if (!currentId) {
-                            /* Empty video_id → YouTube ad; mute immediately */
+                            /* Empty video_id — often a YouTube pre-roll ad, but can also be
+                               a transient blank while the IFrame API loads the video metadata.
+                               Mute immediately as a precaution, then re-check after 800 ms.
+                               If the real song's ID appears by then, restore normal playback. */
                             this.isAdPlaying = true;
                             this.isPlaying   = false;
                             e.target.mute();
+                            var playerEl         = e.target;
+                            var expectedAtCheck  = this.expectedVideoId;
+                            setTimeout(function () {
+                                if (!self.ytPlayer) return;
+                                var recheckData  = playerEl.getVideoData ? playerEl.getVideoData() : {};
+                                var recheckId    = recheckData.video_id || '';
+                                /* Only correct state if the expected song is now confirmed */
+                                if (recheckId && recheckId === expectedAtCheck && recheckId === self.expectedVideoId) {
+                                    self.isAdPlaying = false;
+                                    self.isPlaying   = true;
+                                    self.playingSong = self.currentSong;
+                                    self.musicPaused = false;
+                                    playerEl.unMute();
+                                    playerEl.setVolume(40);
+                                    try { sessionStorage.removeItem('musicPaused'); } catch (err) { /* ignore */ }
+                                }
+                                /* else: genuinely an ad — leave muted until it ends */
+                            }, 800);
 
                         } else {
                             /* Non-empty but unexpected video_id.
@@ -350,12 +372,24 @@
                         }
 
                     } else if (e.data === YT.PlayerState.ENDED) {
-                        /* Check whether the ad ended or the actual song ended */
+                        /* Check whether the ad ended or the actual song ended.
+                           Only treat it as an ad ending when we have a confirmed
+                           different non-empty video_id, or when we already knew an
+                           ad was playing and the video_id is empty.  Any other case
+                           (including a transient empty video_id while no ad was flagged)
+                           is treated as the real song ending so the end modal always shows. */
                         var data2   = e.target.getVideoData ? e.target.getVideoData() : {};
                         var endedId = data2.video_id || '';
-                        if (endedId !== this.expectedVideoId) {
-                            /* Ad ended – the real song will start automatically */
+                        if (endedId && endedId !== this.expectedVideoId) {
+                            /* A confirmed different video ended → it was an ad */
                             this.isAdPlaying = false;
+                            this.isPlaying   = false;
+                            return;
+                        }
+                        if (!endedId && this.isAdPlaying) {
+                            /* Empty video_id ended while we knew an ad was playing → ad ended */
+                            this.isAdPlaying = false;
+                            this.isPlaying   = false;
                             return;
                         }
                         /* Song truly ended */
@@ -451,6 +485,7 @@
 
                     this.currentSong     = next;
                     this.expectedVideoId = next.id;
+                    this.playingSong     = null;   // clear stale display until new song is confirmed
 
                     try {
                         sessionStorage.setItem('musicVideoId', next.id);

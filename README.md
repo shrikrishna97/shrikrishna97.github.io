@@ -35,15 +35,8 @@ shrikrishna97.github.io/
 │       ├── music-player.js       # Vue 3 floating music player widget
 │       └── music-recommender.js  # Rule-based music recommender (season × time-of-day)
 ├── app/
-│   ├── achieve.html              # Certificates & Achievements standalone page
-│   ├── internship.html           # Teaching & Internship standalone page
-│   ├── 404.html                  # Custom 404 error page
-│   ├── components/
-│   │   └── certificate-photo.jpg # Diploma certificate photo used in About section
-│   └── education/
-│       ├── educ.html             # Educational journey timeline page
-│       ├── educ.css              # Styles for educational journey page
-│       └── main.js               # Vue.js data for educational journey
+│   └── components/
+│       └── certificate-photo.jpg # Diploma certificate photo used in About section
 └── static/
     └── ...                       # Profile photo, resume PDF, certificates, project images
 ```
