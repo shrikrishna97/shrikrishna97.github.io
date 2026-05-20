@@ -202,9 +202,9 @@
                         : 'Would you like to listen to some background music while browsing?';
                 },
                 endModalText: function () {
-                    var song = this.playingSong || this.currentSong;
-                    return song
-                        ? '"' + song.title + '" by ' + song.artist + ' has finished. What would you like to do next?'
+                    var displaySong = this.playingSong || this.currentSong;
+                    return displaySong
+                        ? '"' + displaySong.title + '" by ' + displaySong.artist + ' has finished. What would you like to do next?'
                         : 'What would you like to do next?';
                 }
             },
