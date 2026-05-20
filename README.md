@@ -22,18 +22,29 @@ Hi, I'm **Shri Krishna Pandey** — IITM Alumnus, Course Instructor at IIT Madra
 
 ```
 shrikrishna97.github.io/
-├── index.html          # Main portfolio page
-├── styles.css          # Dark-mode-first CSS with custom properties
-├── script.js           # Scroll-reveal, typing tagline, theme toggle, section indicator
-├── sitemap.xml         # SEO sitemap
-├── robots.txt          # Search engine directives
+├── index.html              # Main portfolio page
+├── sitemap.xml             # SEO sitemap
+├── robots.txt              # Search engine directives
+├── assets/
+│   ├── css/
+│   │   └── styles.css      # Dark-mode-first CSS with custom properties
+│   ├── js/
+│   │   ├── script.js       # Scroll-reveal, typing tagline, theme toggle, section indicator, music player
+│   │   └── music-recommender.js  # Rule-based music recommender (season & time-of-day)
+│   └── php/
+│       └── process_form.php  # Form processing
 ├── app/
-│   ├── achieve.html    # Certificates & Achievements page
-│   ├── internship.html # Teaching & Internship details
+│   ├── achieve.html        # Certificates & Achievements page
+│   ├── internship.html     # Teaching & Internship details
+│   ├── 404.html            # Custom 404 page
+│   ├── components/
+│   │   └── project-list.js # Vue.js project-list component
 │   └── education/
-│       └── educ.html   # Educational journey
+│       ├── educ.html       # Educational journey
+│       ├── educ.css        # Styles for educational journey page
+│       └── main.js         # Vue.js data for educational journey
 └── static/
-    └── ...             # Images, PDF resume
+    └── ...                 # Images, PDF resume, certificates
 ```
 
 ---
@@ -41,8 +52,9 @@ shrikrishna97.github.io/
 ## 🚀 Tech Stack
 
 - **Languages:** HTML5, CSS3, JavaScript
-- **Framework:** Bootstrap 5
+- **Frameworks:** Bootstrap 5, Vue.js 2
 - **Fonts:** Inter (Google Fonts)
+- **APIs:** YouTube IFrame API (background music player)
 - **Hosting:** GitHub Pages
 
 ---
@@ -56,6 +68,7 @@ shrikrishna97.github.io/
 - Side section-indicator navigation
 - Lazy-loaded images and `passive` scroll listeners for performance
 - Fully responsive across mobile, tablet, and desktop
+- 🎵 **Background music on open** — a rule-based recommender (season × time-of-day) picks a song via the YouTube IFrame API; visitors are prompted to opt in and can toggle playback at any time
 
 ---
 
